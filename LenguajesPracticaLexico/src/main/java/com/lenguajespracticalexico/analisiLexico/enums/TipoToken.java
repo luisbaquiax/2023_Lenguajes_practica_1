@@ -20,6 +20,5 @@ public enum TipoToken {
     DECIMAL,
     BOOLEANAS,
     COMENTARIO,
-    SIGNOS_AGRUPACION,
     SIGNOS
 }

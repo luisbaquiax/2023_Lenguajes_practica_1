@@ -46,9 +46,14 @@ class AnalizadorLexico {
     public void analizarTokens(String texto) {
         inicialiar();
         texto += "\n";
-        for (int i = index; index < texto.length(); i++) {
-            getToken(texto);
-            System.out.println("");
+        try {
+            for (int i = index; index < texto.length(); i++) {
+                getToken(texto);
+                System.out.println("");
+            }
+
+        } catch (Exception e) {
+
         }
         System.out.println("tokens");
         tokens.forEach((list) -> System.out.println(list.toString()));
@@ -57,6 +62,57 @@ class AnalizadorLexico {
     }
 
     private void getToken(String texto) {
+        this.estadoActual = 0;
+        this.stringToken = "";
+        char temp;
+        int estadoTemp = 0;
+        int estadoSiguiente = 0;
+        while ((!isEstadoAceptado(estadoActual) && (estadoActual != -1)) || (index < texto.length())) {
+            columna++;
+            temp = texto.charAt(index);
+            if (temp == '\n') {
+                columna = 0;
+                fila++;
+            }
+            estadoTemp = siguienteEstado(estadoActual, temp);
+            System.out.println("caracter " + temp + " estado actual: " + estadoActual + " next " + estadoTemp);
+            if (estadoTemp > -1) {
+                stringToken += temp;
+                estadoActual = estadoTemp;
+                estadoSiguiente = siguienteEstado(estadoActual, texto.charAt(index + 1));
+                if (estadoSiguiente == -1) {
+                    Token tokenNew = new Token();
+                    System.out.println("token " + stringToken);
+                    tokenNew.setColumna(columna + 1);
+                    tokenNew.setFila(fila);
+                    tokenNew.setLexema(stringToken);
+                    if (isEstadoAceptado(estadoActual)) {
+                        clasificarToken(tokenNew, estadoActual);
+                        tokens.add(tokenNew);
+                    } else {
+                        tokenNew.setCategoria("Token erróneo");
+                        tokenErrores.add(tokenNew);
+                    }
+                    stringToken = "";
+                    estadoActual = 0;
+                }
+            } else {
+                if (!Character.isSpaceChar(temp) && temp != '\n') {
+                    stringToken += temp;
+                    this.tokenErrores.add(new Token(stringToken, "Token erróneo", fila, columna, ""));
+                    stringToken = "";
+                }
+            }
+            /*else if (Character.isSpaceChar(temp)) {
+                estadoActual = 0;
+            } else {
+                estadoActual = 0;
+            }*/
+            index++;
+        }
+    }
+
+    private void getToken2(String texto) {
         this.estadoActual = 0;
         this.stringToken = "";
         boolean continuar = true;
