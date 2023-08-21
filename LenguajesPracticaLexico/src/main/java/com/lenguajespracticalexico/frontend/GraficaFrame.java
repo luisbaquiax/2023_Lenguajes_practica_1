@@ -40,19 +40,26 @@ public class GraficaFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         labelGrafica = new javax.swing.JLabel();
+        labelInfoToken = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        labelGrafica.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        labelGrafica.setBackground(new java.awt.Color(255, 255, 255));
         labelGrafica.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         labelGrafica.setForeground(new java.awt.Color(0, 0, 0));
         labelGrafica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelGrafica.setText("Toka para refrescar");
+        labelGrafica.setText("Toque para refrescar");
         labelGrafica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelGraficaMouseClicked(evt);
             }
         });
+
+        labelInfoToken.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        labelInfoToken.setForeground(new java.awt.Color(0, 0, 0));
+        labelInfoToken.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -60,14 +67,18 @@ public class GraficaFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelGrafica, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelGrafica, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
+                    .addComponent(labelInfoToken, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelGrafica, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
+                .addComponent(labelInfoToken, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -88,12 +99,13 @@ public class GraficaFrame extends javax.swing.JFrame {
     private void labelGraficaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelGraficaMouseClicked
         // TODO add your handling code here:
         this.utiles.setIconLabel(labelGrafica, "src/holaGraphiz.png", 500);
-
+        this.labelInfoToken.setText("Categoría: " + token.getCategoria() + " Lexema: " + token.getLexema() + " Fila-Columna: " + token.getFila() + "-" + token.getColumna());
     }//GEN-LAST:event_labelGraficaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelGrafica;
+    private javax.swing.JLabel labelInfoToken;
     // End of variables declaration//GEN-END:variables
 }

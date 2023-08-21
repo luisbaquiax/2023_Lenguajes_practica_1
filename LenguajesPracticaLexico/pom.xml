@@ -39,4 +39,25 @@
             <version>0.18.1</version>
         </dependency>
     </dependencies>
+    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
+    <build>
+        <plugins>
+            <plugin>
+                <!-- https://mvnrepository.com/artifact/org.apache.maven/maven-plugin-api -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <index>true</index>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.lenguajespracticalexico.LenguajesPractica1</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build> 
 </project>

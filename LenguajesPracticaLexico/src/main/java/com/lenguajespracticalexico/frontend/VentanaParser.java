@@ -121,6 +121,9 @@ public class VentanaParser extends javax.swing.JFrame {
         jTabbedPane1.setEnabled(false);
 
         scrollPaneErrores.setToolTipText("Errores");
+
+        textPaneErrores.setEditable(false);
+        textPaneErrores.setForeground(new java.awt.Color(255, 0, 51));
         scrollPaneErrores.setViewportView(textPaneErrores);
 
         labelRowColumn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -274,7 +277,7 @@ public class VentanaParser extends javax.swing.JFrame {
 
         jMenuBar1.add(menuFile);
 
-        menuGraphiz.setText("Generate graphics");
+        menuGraphiz.setText(" Generate graph");
 
         mentuItenIdentificadores.setText("Identificadores");
         mentuItenIdentificadores.addActionListener(new java.awt.event.ActionListener() {
@@ -358,7 +361,7 @@ public class VentanaParser extends javax.swing.JFrame {
 
         jMenuBar1.add(menuGraphiz);
 
-        menuReport.setText("Reporte de tokens");
+        menuReport.setText("Token report");
 
         menuItemListTokens.setText("Lista de tokens");
         menuItemListTokens.addActionListener(new java.awt.event.ActionListener() {
@@ -370,7 +373,7 @@ public class VentanaParser extends javax.swing.JFrame {
 
         jMenuBar1.add(menuReport);
 
-        menuInfo.setText("Acerca de...");
+        menuInfo.setText("About");
 
         jMenuItem1.setText("Información-app");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -494,6 +497,7 @@ public class VentanaParser extends javax.swing.JFrame {
     private void btnAnalizaTokensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizaTokensActionPerformed
         // TODO add your handling code here:
         this.analizadorLexico.analizarTokens(textPaneEditor.getText());
+        this.textPaneErrores.setText(infTokensErrores());
     }//GEN-LAST:event_btnAnalizaTokensActionPerformed
 
     private void menuItemLogicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLogicosActionPerformed
@@ -604,6 +608,14 @@ public class VentanaParser extends javax.swing.JFrame {
             String data[] = new String[]{token.getCategoria(), token.getLexema(), token.getFila() + "-" + token.getColumna(), token.getPatron(), "Ver gráfica"};
             defaultTableModel.addRow(data);
         }
+    }
+
+    private String infTokensErrores() {
+        String info = "";
+        for (Token tokenErrore : analizadorLexico.getTokenErrores()) {
+            info += "Error léxico: " + tokenErrore.getLexema() + "\tFila: " + tokenErrore.getFila() + "\tColumna: " + tokenErrore.getColumna() + "\n";
+        }
+        return info;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnalizaTokens;

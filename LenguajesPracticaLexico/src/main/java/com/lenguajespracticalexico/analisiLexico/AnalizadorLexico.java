@@ -99,7 +99,7 @@ class AnalizadorLexico {
             } else {
                 if (!Character.isSpaceChar(temp) && temp != '\n') {
                     stringToken += temp;
-                    this.tokenErrores.add(new Token(stringToken, "Token erróneo", fila, columna, ""));
+                    this.tokenErrores.add(new Token(stringToken, "Token erróneo", fila, columna + 1, ""));
                     stringToken = "";
                 }
             }
