@@ -6,6 +6,7 @@ package com.lenguajespracticalexico.frontend;
 
 import com.lenguajespracticalexico.analisiLexico.Afd;
 import java.awt.Color;
+import javax.annotation.RegEx;
 import javax.swing.JTextPane;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;

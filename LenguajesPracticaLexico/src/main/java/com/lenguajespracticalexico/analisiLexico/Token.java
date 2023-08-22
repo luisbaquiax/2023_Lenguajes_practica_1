@@ -11,8 +11,8 @@ import lombok.*;
  * @author luis
  */
 @Data
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Token {
 
     private String lexema;

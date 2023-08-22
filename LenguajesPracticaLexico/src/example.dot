@@ -1,8 +1,8 @@
 digraph G {
 
-  "o" [shape=doublecircle]  subgraph cluster_0 {
+  "s" [shape=doublecircle]  subgraph cluster_0 {
 
-"a" -> "r" -> "c" -> "h" -> "i" -> "v" -> "o";
-    label = "IDENTIFICADOR";
+"c" -> "l" -> "a" -> "s" -> "s";
+    label = "PALABRA_CLAVE";
   }
 }

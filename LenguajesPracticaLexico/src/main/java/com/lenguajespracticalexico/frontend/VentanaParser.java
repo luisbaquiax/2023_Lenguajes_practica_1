@@ -9,6 +9,7 @@ import com.lenguajespracticalexico.analisiLexico.Token;
 import com.lenguajespracticalexico.graphiz.ManejoGrafica;
 import com.lenguajespracticalexico.manejoArchivos.ManejoArchivo;
 import com.lenguajespracticalexico.reportes.ManejoReportes;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -57,6 +58,7 @@ public class VentanaParser extends javax.swing.JFrame {
         utiles.setIconMenuItem(menuItemSaveAs, "/img/saveAs.jpg");
         utiles.setIconMenuItem(menuItemListTokens, "/img/report.png");
         utiles.setIconMenuItem(btnAnalizaTokens, "/img/run.png", 15);
+        super.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/iconParser.png")));
 
         LineNumberTextPane lineNumberTextPane = new LineNumberTextPane(textPaneEditor);
         scrollPane.setRowHeaderView(lineNumberTextPane);
@@ -109,6 +111,7 @@ public class VentanaParser extends javax.swing.JFrame {
         mentuItemBooleanas = new javax.swing.JMenuItem();
         menuItemSignos = new javax.swing.JMenuItem();
         menuItemComentario = new javax.swing.JMenuItem();
+        menuItemStrings = new javax.swing.JMenuItem();
         menuReport = new javax.swing.JMenu();
         menuItemListTokens = new javax.swing.JMenuItem();
         menuInfo = new javax.swing.JMenu();
@@ -359,6 +362,14 @@ public class VentanaParser extends javax.swing.JFrame {
         });
         menuGraphiz.add(menuItemComentario);
 
+        menuItemStrings.setText("Cadenas");
+        menuItemStrings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemStringsActionPerformed(evt);
+            }
+        });
+        menuGraphiz.add(menuItemStrings);
+
         jMenuBar1.add(menuGraphiz);
 
         menuReport.setText("Token report");
@@ -408,8 +419,7 @@ public class VentanaParser extends javax.swing.JFrame {
 
     private void menuItemListTokensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListTokensActionPerformed
         // TODO add your handling code here:
-        auxiTokens = analizadorLexico.getTokens();
-        llenarTabla(auxiTokens);
+        llenarTabla(analizadorLexico.getTokens());
     }//GEN-LAST:event_menuItemListTokensActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -555,6 +565,12 @@ public class VentanaParser extends javax.swing.JFrame {
         llenarTabla(auxiTokens);
     }//GEN-LAST:event_menuItemComentarioActionPerformed
 
+    private void menuItemStringsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemStringsActionPerformed
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.getTokensCadena(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_menuItemStringsActionPerformed
+
     /**
      * Servirá para encontrar la posición del puntero y eventualemente
      * actualizar su posición fila-columna
@@ -571,6 +587,7 @@ public class VentanaParser extends javax.swing.JFrame {
                 String text = textPaneEditor.getText();
 
                 for (int i = 0; i < pos; i++) {
+                    //char == 10 -> salto de linea o nueva linea
                     if (text.charAt(i) == 10) {
                         fila++;
                         ultimalinea = i;
@@ -646,6 +663,7 @@ public class VentanaParser extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemSave;
     private javax.swing.JMenuItem menuItemSaveAs;
     private javax.swing.JMenuItem menuItemSignos;
+    private javax.swing.JMenuItem menuItemStrings;
     private javax.swing.JMenuItem menuItemWordKeys;
     private javax.swing.JMenu menuReport;
     private javax.swing.JPanel panelEditor;

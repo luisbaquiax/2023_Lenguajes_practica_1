@@ -2,6 +2,7 @@
 /home/luis/Documentos/2023_Lenguajes_practica_1/LenguajesPracticaLexico/src/main/java/com/lenguajespracticalexico/frontend/VentanaParser.java
 /home/luis/Documentos/2023_Lenguajes_practica_1/LenguajesPracticaLexico/src/main/java/com/lenguajespracticalexico/graphiz/ManejoGrafica.java
 /home/luis/Documentos/2023_Lenguajes_practica_1/LenguajesPracticaLexico/src/main/java/com/lenguajespracticalexico/analisiLexico/Afd.java
+/home/luis/Documentos/2023_Lenguajes_practica_1/LenguajesPracticaLexico/src/main/java/com/lenguajespracticalexico/analisiLexico/enums/ErrorToken.java
 /home/luis/Documentos/2023_Lenguajes_practica_1/LenguajesPracticaLexico/src/main/java/com/lenguajespracticalexico/frontend/Utiles.java
 /home/luis/Documentos/2023_Lenguajes_practica_1/LenguajesPracticaLexico/src/main/java/com/lenguajespracticalexico/frontend/LineNumberTextPane.java
 /home/luis/Documentos/2023_Lenguajes_practica_1/LenguajesPracticaLexico/src/main/java/com/lenguajespracticalexico/analisiLexico/AnalizadorLexico.java

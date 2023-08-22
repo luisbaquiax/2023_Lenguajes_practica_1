@@ -70,11 +70,16 @@ public class CaracterPosicion {
             posicion = 22;
         } else if (caracter == ':') {
             posicion = 23;
+        } else if (caracter == ' ') {
+            posicion = 24;
         } else if (caracter == '.') {
             posicion = 25;
-        } else if (caracterPermitido(caracter, Afd.ALFABETO)) {
-            posicion = 24;
+        } else if (caracter == '\n') {
+            posicion = -1;
+        } else {
+            posicion = 26;
         }
+
         return posicion;
     }
 

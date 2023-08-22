@@ -57,9 +57,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="labelInfoToken" pref="26" max="32767" attributes="0"/>
+                  <Component id="labelInfoToken" min="-2" pref="17" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="labelGrafica" min="-2" pref="774" max="-2" attributes="0"/>
+                  <Component id="labelGrafica" min="-2" pref="783" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>

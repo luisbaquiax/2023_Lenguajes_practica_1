@@ -4,6 +4,7 @@
  */
 package com.lenguajespracticalexico.analisiLexico;
 
+import com.lenguajespracticalexico.analisiLexico.enums.ErrorToken;
 import com.lenguajespracticalexico.analisiLexico.enums.TipoToken;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,12 @@ class AnalizadorLexico {
         this.tempColumn = 0;
     }
 
+    /**
+     * Es el método principal que llama a otro método quien se encarga de
+     * generar los tokens
+     *
+     * @param texto
+     */
     public void analizarTokens(String texto) {
         inicialiar();
         texto += "\n";
@@ -61,156 +68,77 @@ class AnalizadorLexico {
         tokenErrores.forEach((list) -> System.out.println(list.toString()));
     }
 
+    /**
+     * Se encarga de generar los tokens
+     *
+     * @param texto
+     */
     private void getToken(String texto) {
         this.estadoActual = 0;
         this.stringToken = "";
         char temp;
         int estadoTemp = 0;
         int estadoSiguiente = 0;
-        while ((!isEstadoAceptado(estadoActual) && (estadoActual != -1)) || (index < texto.length())) {
+        while (index < texto.length()) {
             columna++;
             temp = texto.charAt(index);
             if (temp == '\n') {
                 columna = 0;
                 fila++;
             }
-            estadoTemp = siguienteEstado(estadoActual, temp);
             System.out.println("caracter " + temp + " estado actual: " + estadoActual + " next " + estadoTemp);
+
+            estadoTemp = siguienteEstado(temp);
             if (estadoTemp > -1) {
                 stringToken += temp;
                 estadoActual = estadoTemp;
-                estadoSiguiente = siguienteEstado(estadoActual, texto.charAt(index + 1));
+                estadoSiguiente = siguienteEstado(texto.charAt(index + 1));
                 if (estadoSiguiente == -1) {
-                    Token tokenNew = new Token();
                     System.out.println("token " + stringToken);
-                    tokenNew.setColumna(columna + 1);
-                    tokenNew.setFila(fila);
-                    tokenNew.setLexema(stringToken);
-                    if (isEstadoAceptado(estadoActual)) {
-                        clasificarToken(tokenNew, estadoActual);
-                        tokens.add(tokenNew);
-                    } else {
-                        tokenNew.setCategoria("Token erróneo");
-                        tokenErrores.add(tokenNew);
-                    }
+                    //creamos el token
+                    crearToken(stringToken, fila, columna, estadoActual);
                     stringToken = "";
                     estadoActual = 0;
                 }
             } else {
                 if (!Character.isSpaceChar(temp) && temp != '\n') {
                     stringToken += temp;
-                    this.tokenErrores.add(new Token(stringToken, "Token erróneo", fila, columna + 1, ""));
+                    crearToken(stringToken, fila, columna, estadoActual);
                     stringToken = "";
                 }
             }
-            /*else if (Character.isSpaceChar(temp)) {
-                estadoActual = 0;
-            } else {
-                estadoActual = 0;
-            }*/
             index++;
         }
     }
 
-    private void getToken2(String texto) {
-        this.estadoActual = 0;
-        this.stringToken = "";
-        boolean continuar = true;
-        char temp;
-        int estadoTemp = 0;
-        Token tokenNew = new Token();
-        while ((continuar) && index < texto.length()) {
-            temp = texto.charAt(index);
-            if (temp == '\n') {
-                this.fila++;
-                columna = 0;
-            } else {
-                this.columna++;
-                tempColumn = this.columna;
-            }
-            if ((Character.isSpaceChar(temp)) || temp == '\n' || estadoActual == -1) {
-//                if ((estadoActual == Afd.S13) || (estadoActual == Afd.S19)
-//                        || (estadoActual == Afd.S14) || (estadoActual == Afd.S20)
-//                        || (estadoActual == Afd.S15) || (estadoActual == Afd.S21)) {
-//                    stringToken += temp;
-//                    continuar = true;
-//                } else {
-//                    continuar = false;
-//                }
-                continuar = false;
-            } else {
-                if (estadoActual >= 0) {
-                    if (estadoActual == 10) {
-                        break;
-                    } else {
-                        if ((estadoActual == Afd.S13) || (estadoActual == Afd.S19)) {
-                            estadoTemp = Afd.S19;
-                        } else if ((estadoActual == Afd.S14) || (estadoActual == Afd.S20)) {
-                            estadoTemp = Afd.S20;
-                        } else if ((estadoActual == Afd.S15) || (estadoActual == Afd.S21)) {
-                            estadoTemp = Afd.S21;
-                        } else {
-                            estadoTemp = siguienteEstado(estadoActual, temp);
-                        }
-                        if (estadoTemp > -1) {
-                            System.out.println("caracter " + temp + " estado actual: " + estadoActual + " siguiente: " + estadoTemp);
-                            stringToken += temp;
-                        } else {
-                            tokenNew.setColumna(columna);
-                            tokenNew.setFila(fila);
-                            tokenNew.setLexema(stringToken);
-                            if (isEstadoAceptado(estadoActual)) {
-                                clasificarToken(tokenNew, estadoActual);
-                                this.tokens.add(tokenNew);
-                            } else {
-                                index--;
-                                boolean si = false;
-                                for (Token token : tokens) {
-                                    if (tokenNew.equals(token)) {
-                                        si = true;
-                                        break;
-                                    }
-                                }
-                                if (!si) {
-                                    this.tokenErrores.add(tokenNew);
-                                }
-                            }
-                        }
-                        estadoActual = estadoTemp;
-                    }
-                } else {
-                    estadoActual = 0;
-                }
-            }
-            this.index++;
-        }
-        System.out.println("token " + stringToken);
-        if (estadoActual == -1) {
-            index--;
-        }
-        tokenNew.setColumna(columna);
-        tokenNew.setFila(fila);
-        tokenNew.setLexema(stringToken);
+    /**
+     * Crea un token, clasifica y agrega el mismo a una lista de tokens o tokens
+     * erróneos
+     *
+     * @param stringToken
+     * @param fila
+     * @param columna
+     * @param estadoActual
+     */
+    private void crearToken(String stringToken, int fila, int columna, int estadoActual) {
+        Token tokenNew = new Token(stringToken, "", fila, columna + 1, "");
         if (isEstadoAceptado(estadoActual)) {
             clasificarToken(tokenNew, estadoActual);
-            this.tokens.add(tokenNew);
+            tokens.add(tokenNew);
         } else {
-            index--;
-            boolean si = false;
-            for (Token token : tokens) {
-                if (tokenNew.equals(token)) {
-                    si = true;
-                    break;
-                }
-            }
-            if (!si) {
-                this.tokenErrores.add(tokenNew);
-            }
+            tokenNew.setCategoria(ErrorToken.TOKEN_ERRONÉO.toString());
+            tokenErrores.add(tokenNew);
         }
-
     }
 
-    private int siguienteEstado(int estadoActual, char caracter) {
+    /**
+     * Obtiene la posición del estado siguiente en la matriz de transición de
+     * acuerdo al caracter dado
+     *
+     * @param caracter
+     * @return
+     */
+    private int siguienteEstado(char caracter) {
         int estadoSiguiente = -1;
         if (caracterPosicion.getPosicionCaracter(caracter) >= 0
                 && (caracterPosicion.getPosicionCaracter(caracter) < afd.getTransiciones()[0].length)) {
@@ -275,6 +203,10 @@ class AnalizadorLexico {
             case 12 -> {
                 token.setCategoria(TipoToken.ENTERO.toString());
                 token.setPatron(ExpresionesRegulares.ENTERO);
+            }
+            case 15 -> {
+                token.setCategoria(TipoToken.COMENTARIO.toString());
+                token.setPatron(ExpresionesRegulares.COMENTARIO);
             }
             case 16, 17 -> {
                 token.setCategoria(TipoToken.OPERADOR_ARITMÉTICO.toString());

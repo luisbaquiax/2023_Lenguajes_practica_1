@@ -5,13 +5,12 @@
 package com.lenguajespracticalexico.frontend;
 
 import com.lenguajespracticalexico.analisiLexico.Token;
-import lombok.Data;
+import java.awt.Toolkit;
 
 /**
  *
  * @author luis
  */
-@Data
 public class GraficaFrame extends javax.swing.JFrame {
 
     private Token token;
@@ -25,6 +24,8 @@ public class GraficaFrame extends javax.swing.JFrame {
     public GraficaFrame(Token token, Utiles utiles) {
         this.token = token;
         this.utiles = utiles;
+        super.setTitle("Gráfica de token");
+        super.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/iconParser.png")));
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -76,9 +77,9 @@ public class GraficaFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelInfoToken, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addComponent(labelInfoToken, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 

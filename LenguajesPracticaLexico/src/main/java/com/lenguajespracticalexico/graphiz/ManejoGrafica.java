@@ -41,17 +41,13 @@ public class ManejoGrafica {
     private String getGraphiz(Token token) {
         String auxi = "";
         String caracteres = token.getLexema();
-        String c = caracteres.charAt(caracteres.length() - 1) + "";
-
         for (int i = 0; i < caracteres.length() - 1; i++) {
-            //auxi += caracteres.charAt(i) + "-> ";
             auxi += "\"" + caracteres.charAt(i) + "\" -> ";
         }
-        //auxi += caracteres.charAt(caracteres.length() - 1) + "\"";
         auxi += "\"" + caracteres.charAt(caracteres.length() - 1) + "\"";
         String g = "digraph G {\n"
                 + "\n"
-                + "  \"" + c + "\" [shape=doublecircle]"
+                + "  \"" + caracteres.charAt(caracteres.length() - 1) + "\" [shape=doublecircle]"
                 + "  subgraph cluster_0 {\n"
                 + "\n"
                 + auxi + ";\n"
