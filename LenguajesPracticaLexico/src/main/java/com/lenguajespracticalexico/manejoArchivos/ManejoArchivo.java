@@ -35,7 +35,7 @@ public class ManejoArchivo {
      */
     public String pathChoserSave() {
         choser = new JFileChooser();
-         choser.addChoosableFileFilter(new FileNameExtensionFilter("txt", "txt"));
+        choser.addChoosableFileFilter(new FileNameExtensionFilter("txt", "txt"));
         choser.setAcceptAllFileFilterUsed(false);
         int seleccionado = choser.showSaveDialog(null);
         if (seleccionado == APPROVE_OPTION) {
@@ -51,7 +51,7 @@ public class ManejoArchivo {
      */
     public String pathChoserOpen() {
         choser = new JFileChooser();
-         choser.addChoosableFileFilter(new FileNameExtensionFilter("txt", "txt"));
+        choser.addChoosableFileFilter(new FileNameExtensionFilter("txt", "txt"));
         choser.setAcceptAllFileFilterUsed(false);
         int seleccionado = choser.showOpenDialog(null);
         if (seleccionado == APPROVE_OPTION) {
@@ -66,21 +66,17 @@ public class ManejoArchivo {
      * @param ruta
      * @param contenido
      */
-    public void escribirArchivodeTexto(String ruta, String contenido) {
-        try {
-            File file = new File(ruta);
-            // Si el archivo no existe es creado
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            FileWriter escribeArchivo = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(escribeArchivo);
-            bw.write(contenido);
-            bw.close();
-            JOptionPane.showMessageDialog(null, "Guardado con éxito!!");
-        } catch (IOException e) {
-            System.out.println("Error al guardar el archivo");
+    public void escribirArchivodeTexto(String ruta, String contenido) throws IOException {
+        File file = new File(ruta);
+        // Si el archivo no existe es creado
+        if (!file.exists()) {
+            file.createNewFile();
         }
+        FileWriter escribeArchivo = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(escribeArchivo);
+        bw.write(contenido);
+        bw.close();
+
     }
 
     /**

@@ -50,25 +50,102 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuGraphiz">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Generate graphics"/>
+            <Property name="text" type="java.lang.String" value=" Generate graph"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuGraphizMouseClicked"/>
-          </Events>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mentuItenVerGrafic">
+            <MenuItem class="javax.swing.JMenuItem" name="mentuItenIdentificadores">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ver gr&#xe1;fica"/>
+                <Property name="text" type="java.lang.String" value="Identificadores"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mentuItenVerGraficActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mentuItenIdentificadoresActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemWordKeys">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Palabras reservadas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemWordKeysActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemLogicos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Logicos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemLogicosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mentuItemAsignacion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Asignaci&#xf3;n"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mentuItemAsignacionActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemEnteros">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Enteros"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemEnterosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemDecimal">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Decimales"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemDecimalActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemAritm&#xe9;ticos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Aritm&#xe9;ticos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemAritm&#xe9;ticosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mentuItemBooleanas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Booleanas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mentuItemBooleanasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemSignos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Signos (agrupaci&#xf3;n, otros)"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemSignosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemComentario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Comentarios"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemComentarioActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemStrings">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadenas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemStringsActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuReport">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Reporte de tokens"/>
+            <Property name="text" type="java.lang.String" value="Token report"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemListTokens">
@@ -83,7 +160,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuInfo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Acerca de..."/>
+            <Property name="text" type="java.lang.String" value="About"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
@@ -204,6 +281,12 @@
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
                     <Component class="javax.swing.JTextPane" name="textPaneErrores">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="33" green="0" red="ff" type="rgb"/>
+                        </Property>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -226,40 +309,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="panelGraphiz">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="">
-                    <Property name="tabTitle" type="java.lang.String" value=""/>
-                  </JTabbedPaneConstraints>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelGrafico" pref="1289" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelGrafico" pref="621" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="labelGrafico">
-                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="panelReport">
@@ -307,7 +356,7 @@
                             <Column editable="false" title="Lexema" type="java.lang.Object"/>
                             <Column editable="false" title="Fila-columna" type="java.lang.Object"/>
                             <Column editable="false" title="Patr&#xf3;n" type="java.lang.Object"/>
-                            <Column editable="true" title="Ver gr&#xe1;fica" type="java.lang.Object"/>
+                            <Column editable="false" title="Ver gr&#xe1;fica" type="java.lang.Object"/>
                           </Table>
                         </Property>
                       </Properties>

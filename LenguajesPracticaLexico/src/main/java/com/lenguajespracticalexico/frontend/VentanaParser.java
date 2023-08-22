@@ -6,8 +6,14 @@ package com.lenguajespracticalexico.frontend;
 
 import com.lenguajespracticalexico.analisiLexico.AnalizadorLexico;
 import com.lenguajespracticalexico.analisiLexico.Token;
+import com.lenguajespracticalexico.graphiz.ManejoGrafica;
 import com.lenguajespracticalexico.manejoArchivos.ManejoArchivo;
+import com.lenguajespracticalexico.reportes.ManejoReportes;
+import java.awt.Toolkit;
 import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
 import javax.swing.event.CaretEvent;
@@ -26,6 +32,9 @@ public class VentanaParser extends javax.swing.JFrame {
     private DefaultTableModel defaultTableModel;
     private AnalizadorLexico analizadorLexico;
     private Utiles utiles;
+    private ManejoReportes manejoReportes;
+    private ManejoGrafica manejoGrafica;
+    private List<Token> auxiTokens;
 
     /**
      * Creates new form VentanaParser
@@ -36,6 +45,8 @@ public class VentanaParser extends javax.swing.JFrame {
         this.colorJtextPane.colors();
         this.manejoArchivo = new ManejoArchivo();
         this.analizadorLexico = new AnalizadorLexico();
+        this.manejoReportes = new ManejoReportes();
+        this.manejoGrafica = new ManejoGrafica(this.manejoArchivo);
         this.path = "";
         setTitle("Parser Editor");
         setLocationRelativeTo(null);
@@ -46,9 +57,9 @@ public class VentanaParser extends javax.swing.JFrame {
         utiles.setIconMenuItem(menuItemSave, "/img/save.png");
         utiles.setIconMenuItem(menuItemSaveAs, "/img/saveAs.jpg");
         utiles.setIconMenuItem(menuItemListTokens, "/img/report.png");
-        utiles.setIconMenuItem(mentuItenVerGrafic, "/img/graphviz.png");
         utiles.setIconMenuItem(btnAnalizaTokens, "/img/run.png", 15);
-        
+        super.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/iconParser.png")));
+
         LineNumberTextPane lineNumberTextPane = new LineNumberTextPane(textPaneEditor);
         scrollPane.setRowHeaderView(lineNumberTextPane);
         LineNumberTextPane lineNumberTextPane2 = new LineNumberTextPane(textPaneErrores);
@@ -76,8 +87,6 @@ public class VentanaParser extends javax.swing.JFrame {
         labelRowColumn = new javax.swing.JLabel();
         scrollPane = new javax.swing.JScrollPane();
         textPaneEditor = new javax.swing.JTextPane();
-        panelGraphiz = new javax.swing.JPanel();
-        labelGrafico = new javax.swing.JLabel();
         panelReport = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableTokens = new javax.swing.JTable();
@@ -92,7 +101,17 @@ public class VentanaParser extends javax.swing.JFrame {
         menuItemSave = new javax.swing.JMenuItem();
         menuItemSaveAs = new javax.swing.JMenuItem();
         menuGraphiz = new javax.swing.JMenu();
-        mentuItenVerGrafic = new javax.swing.JMenuItem();
+        mentuItenIdentificadores = new javax.swing.JMenuItem();
+        menuItemWordKeys = new javax.swing.JMenuItem();
+        menuItemLogicos = new javax.swing.JMenuItem();
+        mentuItemAsignacion = new javax.swing.JMenuItem();
+        menuItemEnteros = new javax.swing.JMenuItem();
+        menuItemDecimal = new javax.swing.JMenuItem();
+        menuItemAritméticos = new javax.swing.JMenuItem();
+        mentuItemBooleanas = new javax.swing.JMenuItem();
+        menuItemSignos = new javax.swing.JMenuItem();
+        menuItemComentario = new javax.swing.JMenuItem();
+        menuItemStrings = new javax.swing.JMenuItem();
         menuReport = new javax.swing.JMenu();
         menuItemListTokens = new javax.swing.JMenuItem();
         menuInfo = new javax.swing.JMenu();
@@ -105,6 +124,9 @@ public class VentanaParser extends javax.swing.JFrame {
         jTabbedPane1.setEnabled(false);
 
         scrollPaneErrores.setToolTipText("Errores");
+
+        textPaneErrores.setEditable(false);
+        textPaneErrores.setForeground(new java.awt.Color(255, 0, 51));
         scrollPaneErrores.setViewportView(textPaneErrores);
 
         labelRowColumn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -138,25 +160,6 @@ public class VentanaParser extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("", panelEditor);
 
-        javax.swing.GroupLayout panelGraphizLayout = new javax.swing.GroupLayout(panelGraphiz);
-        panelGraphiz.setLayout(panelGraphizLayout);
-        panelGraphizLayout.setHorizontalGroup(
-            panelGraphizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelGraphizLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, 1289, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelGraphizLayout.setVerticalGroup(
-            panelGraphizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelGraphizLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("", panelGraphiz);
-
         tableTokens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -166,7 +169,7 @@ public class VentanaParser extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -277,24 +280,99 @@ public class VentanaParser extends javax.swing.JFrame {
 
         jMenuBar1.add(menuFile);
 
-        menuGraphiz.setText("Generate graphics");
-        menuGraphiz.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuGraphizMouseClicked(evt);
-            }
-        });
+        menuGraphiz.setText(" Generate graph");
 
-        mentuItenVerGrafic.setText("Ver gráfica");
-        mentuItenVerGrafic.addActionListener(new java.awt.event.ActionListener() {
+        mentuItenIdentificadores.setText("Identificadores");
+        mentuItenIdentificadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mentuItenVerGraficActionPerformed(evt);
+                mentuItenIdentificadoresActionPerformed(evt);
             }
         });
-        menuGraphiz.add(mentuItenVerGrafic);
+        menuGraphiz.add(mentuItenIdentificadores);
+
+        menuItemWordKeys.setText("Palabras reservadas");
+        menuItemWordKeys.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemWordKeysActionPerformed(evt);
+            }
+        });
+        menuGraphiz.add(menuItemWordKeys);
+
+        menuItemLogicos.setText("Logicos");
+        menuItemLogicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemLogicosActionPerformed(evt);
+            }
+        });
+        menuGraphiz.add(menuItemLogicos);
+
+        mentuItemAsignacion.setText("Asignación");
+        mentuItemAsignacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mentuItemAsignacionActionPerformed(evt);
+            }
+        });
+        menuGraphiz.add(mentuItemAsignacion);
+
+        menuItemEnteros.setText("Enteros");
+        menuItemEnteros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemEnterosActionPerformed(evt);
+            }
+        });
+        menuGraphiz.add(menuItemEnteros);
+
+        menuItemDecimal.setText("Decimales");
+        menuItemDecimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemDecimalActionPerformed(evt);
+            }
+        });
+        menuGraphiz.add(menuItemDecimal);
+
+        menuItemAritméticos.setText("Aritméticos");
+        menuItemAritméticos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAritméticosActionPerformed(evt);
+            }
+        });
+        menuGraphiz.add(menuItemAritméticos);
+
+        mentuItemBooleanas.setText("Booleanas");
+        mentuItemBooleanas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mentuItemBooleanasActionPerformed(evt);
+            }
+        });
+        menuGraphiz.add(mentuItemBooleanas);
+
+        menuItemSignos.setText("Signos (agrupación, otros)");
+        menuItemSignos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSignosActionPerformed(evt);
+            }
+        });
+        menuGraphiz.add(menuItemSignos);
+
+        menuItemComentario.setText("Comentarios");
+        menuItemComentario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemComentarioActionPerformed(evt);
+            }
+        });
+        menuGraphiz.add(menuItemComentario);
+
+        menuItemStrings.setText("Cadenas");
+        menuItemStrings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemStringsActionPerformed(evt);
+            }
+        });
+        menuGraphiz.add(menuItemStrings);
 
         jMenuBar1.add(menuGraphiz);
 
-        menuReport.setText("Reporte de tokens");
+        menuReport.setText("Token report");
 
         menuItemListTokens.setText("Lista de tokens");
         menuItemListTokens.addActionListener(new java.awt.event.ActionListener() {
@@ -306,7 +384,7 @@ public class VentanaParser extends javax.swing.JFrame {
 
         jMenuBar1.add(menuReport);
 
-        menuInfo.setText("Acerca de...");
+        menuInfo.setText("About");
 
         jMenuItem1.setText("Información-app");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -334,24 +412,14 @@ public class VentanaParser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuGraphizMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuGraphizMouseClicked
-        // TODO add your handling code here:
-        System.out.println("hola1");
-    }//GEN-LAST:event_menuGraphizMouseClicked
-
-    private void mentuItenVerGraficActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentuItenVerGraficActionPerformed
-        // TODO add your handling code here:
-        this.jTabbedPane1.setSelectedIndex(1);
-        this.btnAnalizaTokens.setVisible(false);
-        this.btnBackEditor.setVisible(true);
-    }//GEN-LAST:event_mentuItenVerGraficActionPerformed
+    private void mentuItenIdentificadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentuItenIdentificadoresActionPerformed
+        auxiTokens = manejoReportes.getIdentificadores(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_mentuItenIdentificadoresActionPerformed
 
     private void menuItemListTokensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListTokensActionPerformed
         // TODO add your handling code here:
-        this.jTabbedPane1.setSelectedIndex(2);
-        this.btnAnalizaTokens.setVisible(false);
-        this.btnBackEditor.setVisible(true);
-        llenarTabla();
+        llenarTabla(analizadorLexico.getTokens());
     }//GEN-LAST:event_menuItemListTokensActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -393,7 +461,12 @@ public class VentanaParser extends javax.swing.JFrame {
                 null, opciones,
                 opciones[0]);
         if (op == 0) {
-            guardar();
+            try {
+                guardar();
+                JOptionPane.showMessageDialog(null, "Se guardó el archivo con éxito.");
+            } catch (IOException ex) {
+                Logger.getLogger(VentanaParser.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         this.path = "";
         this.textPaneEditor.setText("");
@@ -401,13 +474,23 @@ public class VentanaParser extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemNewFileActionPerformed
 
     private void menuItemSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSaveAsActionPerformed
-        // TODO add your handling code here:
-        guardarComo();
+        try {
+            // TODO add your handling code here:
+            guardarComo();
+            JOptionPane.showMessageDialog(null, "Se guardó el archivo con éxito.");
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaParser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuItemSaveAsActionPerformed
 
     private void menuItemSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSaveActionPerformed
-        // TODO add your handling code here:
-        guardar();
+        try {
+            // TODO add your handling code here:
+            guardar();
+            JOptionPane.showMessageDialog(null, "Se guardó el archivo con éxito.");
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaParser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuItemSaveActionPerformed
 
     private void tableTokensMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableTokensMouseClicked
@@ -415,14 +498,78 @@ public class VentanaParser extends javax.swing.JFrame {
         int columna = this.tableTokens.getSelectedColumn();
         int fila = this.tableTokens.getSelectedRow();
         if (fila >= 0 && columna == 4) {
-            this.jTabbedPane1.setSelectedIndex(1);
+            this.manejoGrafica.dibujar(auxiTokens.get(fila));
+            GraficaFrame g = new GraficaFrame(auxiTokens.get(fila), utiles);
+            g.setVisible(true);
         }
     }//GEN-LAST:event_tableTokensMouseClicked
 
     private void btnAnalizaTokensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizaTokensActionPerformed
         // TODO add your handling code here:
         this.analizadorLexico.analizarTokens(textPaneEditor.getText());
+        this.textPaneErrores.setText(infTokensErrores());
     }//GEN-LAST:event_btnAnalizaTokensActionPerformed
+
+    private void menuItemLogicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLogicosActionPerformed
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.getLogicos(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_menuItemLogicosActionPerformed
+
+    private void menuItemDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDecimalActionPerformed
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.getDecimales(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+
+    }//GEN-LAST:event_menuItemDecimalActionPerformed
+
+    private void menuItemWordKeysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemWordKeysActionPerformed
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.getWordKeys(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_menuItemWordKeysActionPerformed
+
+    private void mentuItemAsignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentuItemAsignacionActionPerformed
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.getTokensAsignacion(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_mentuItemAsignacionActionPerformed
+
+    private void menuItemEnterosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEnterosActionPerformed
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.getEnteros(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_menuItemEnterosActionPerformed
+
+    private void menuItemAritméticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAritméticosActionPerformed
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.getTokensAritmeticos(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_menuItemAritméticosActionPerformed
+
+    private void mentuItemBooleanasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentuItemBooleanasActionPerformed
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.getBooleanas(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_mentuItemBooleanasActionPerformed
+
+    private void menuItemSignosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSignosActionPerformed
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.getTokensSignos(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_menuItemSignosActionPerformed
+
+    private void menuItemComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemComentarioActionPerformed
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.getTokensComentario(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_menuItemComentarioActionPerformed
+
+    private void menuItemStringsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemStringsActionPerformed
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.getTokensCadena(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_menuItemStringsActionPerformed
 
     /**
      * Servirá para encontrar la posición del puntero y eventualemente
@@ -440,6 +587,7 @@ public class VentanaParser extends javax.swing.JFrame {
                 String text = textPaneEditor.getText();
 
                 for (int i = 0; i < pos; i++) {
+                    //char == 10 -> salto de linea o nueva linea
                     if (text.charAt(i) == 10) {
                         fila++;
                         ultimalinea = i;
@@ -453,27 +601,38 @@ public class VentanaParser extends javax.swing.JFrame {
 
     }
 
-    private void guardar() {
+    private void guardar() throws IOException {
         if ("".equals(path)) {
             guardarComo();
         } else {
-            this.manejoArchivo.escribirArchivodeTexto(path + ManejoArchivo.FILTRO, textPaneEditor.getText());
+            this.manejoArchivo.escribirArchivodeTexto(path, textPaneEditor.getText());
         }
 
     }
 
-    private void guardarComo() {
+    private void guardarComo() throws IOException {
         String ruta = this.manejoArchivo.pathChoserSave();
-        this.manejoArchivo.escribirArchivodeTexto(ruta + ManejoArchivo.FILTRO, textPaneEditor.getText());
+        this.manejoArchivo.escribirArchivodeTexto(ruta, textPaneEditor.getText());
     }
 
-    private void llenarTabla() {
+    private void llenarTabla(List<Token> tokens) {
+        this.jTabbedPane1.setSelectedIndex(1);
+        this.btnAnalizaTokens.setVisible(false);
+        this.btnBackEditor.setVisible(true);
         defaultTableModel = (DefaultTableModel) tableTokens.getModel();
         defaultTableModel.setRowCount(0);
-        for (Token token : analizadorLexico.getTokens()) {
+        for (Token token : tokens) {
             String data[] = new String[]{token.getCategoria(), token.getLexema(), token.getFila() + "-" + token.getColumna(), token.getPatron(), "Ver gráfica"};
             defaultTableModel.addRow(data);
         }
+    }
+
+    private String infTokensErrores() {
+        String info = "";
+        for (Token tokenErrore : analizadorLexico.getTokenErrores()) {
+            info += "Error léxico: " + tokenErrore.getLexema() + "\tFila: " + tokenErrore.getFila() + "\tColumna: " + tokenErrore.getColumna() + "\n";
+        }
+        return info;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnalizaTokens;
@@ -486,20 +645,28 @@ public class VentanaParser extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JLabel labelGrafico;
     private javax.swing.JLabel labelRowColumn;
-    private javax.swing.JMenuItem mentuItenVerGrafic;
+    private javax.swing.JMenuItem mentuItemAsignacion;
+    private javax.swing.JMenuItem mentuItemBooleanas;
+    private javax.swing.JMenuItem mentuItenIdentificadores;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenu menuGraphiz;
     private javax.swing.JMenu menuInfo;
+    private javax.swing.JMenuItem menuItemAritméticos;
+    private javax.swing.JMenuItem menuItemComentario;
+    private javax.swing.JMenuItem menuItemDecimal;
+    private javax.swing.JMenuItem menuItemEnteros;
     private javax.swing.JMenuItem menuItemListTokens;
+    private javax.swing.JMenuItem menuItemLogicos;
     private javax.swing.JMenuItem menuItemNewFile;
     private javax.swing.JMenuItem menuItemOpenFile;
     private javax.swing.JMenuItem menuItemSave;
     private javax.swing.JMenuItem menuItemSaveAs;
+    private javax.swing.JMenuItem menuItemSignos;
+    private javax.swing.JMenuItem menuItemStrings;
+    private javax.swing.JMenuItem menuItemWordKeys;
     private javax.swing.JMenu menuReport;
     private javax.swing.JPanel panelEditor;
-    private javax.swing.JPanel panelGraphiz;
     private javax.swing.JPanel panelReport;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JScrollPane scrollPaneErrores;

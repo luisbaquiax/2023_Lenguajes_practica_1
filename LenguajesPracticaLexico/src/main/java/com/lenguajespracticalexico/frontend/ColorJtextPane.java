@@ -6,6 +6,7 @@ package com.lenguajespracticalexico.frontend;
 
 import com.lenguajespracticalexico.analisiLexico.Afd;
 import java.awt.Color;
+import javax.annotation.RegEx;
 import javax.swing.JTextPane;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -46,7 +47,6 @@ public class ColorJtextPane {
      */
     private int indiceUltimoCaracterDifLetraNumero(String text, int index) {
         while (--index >= 0) {
-            //  \\W = [A-Za-Z0-9]
             if (String.valueOf(text.charAt(index)).matches("\\W")) {
                 break;
             }
@@ -94,7 +94,7 @@ public class ColorJtextPane {
                         } else if (text.substring(indexInicial, indexFinal).
                                 matches("(\\W)*(\\+|\\-|\\*|\\*\\*|\\%|\\/|\\/\\/|and|or|not|\\=|\\+\\=|-=|\\*=|/=|//=|\\*\\*=|>|<|>=|<=|==|\\!=)")) {
                             setCharacterAttributes(indexInicial, indexFinal - indexInicial, OPERADORES_ARITMETICOS_CELESTE, false);
-                        } else if (text.substring(indexInicial, indexFinal).matches("(\\W)*(#)(\\w*)(\\ *)(\\W*)")) {
+                        } else if (text.substring(indexInicial, indexFinal).matches("(\\W)*(#)(.| S)*")) {
                             setCharacterAttributes(indexInicial, indexFinal - indexInicial, COMENTARIOS_GRAY, false);
                         } else if (text.substring(indexInicial, indexFinal).matches("(\\W)*(\\(|\\)|\\[|\\]|\\{|\\}|,|;|:)")) {
                             setCharacterAttributes(indexInicial, indexFinal - indexInicial, OTROS_GREEN, false);

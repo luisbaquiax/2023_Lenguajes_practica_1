@@ -43,4 +43,10 @@ public class Utiles {
                 tam, Image.SCALE_SMOOTH)));
     }
 
+    public void setIconLabel(JLabel label, String ruta, int tam) {
+        ImageIcon icono1 = new ImageIcon(ruta);
+        label.setIcon(new ImageIcon(icono1.getImage().getScaledInstance(tam,
+                label.getSize().height, Image.SCALE_SMOOTH)));
+    }
+
 }
