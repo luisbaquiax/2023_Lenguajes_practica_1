@@ -1,8 +1,8 @@
 digraph G {
 
-  "'" [shape=doublecircle]  subgraph cluster_0 {
+  "y" [shape=doublecircle]  subgraph cluster_0 {
 
-"'" -> "c" -> "a" -> "d" -> "e" -> "n" -> "a" -> " " -> "e" -> "n" -> " " -> "c" -> "o" -> "m" -> "i" -> "l" -> "l" -> "a" -> "s" -> " " -> "s" -> "i" -> "m" -> "p" -> "l" -> "e" -> "s" -> "'";
-    label = "CADENA";
+"t" -> "r" -> "y";
+    label = "PALABRA_CLAVE";
   }
 }

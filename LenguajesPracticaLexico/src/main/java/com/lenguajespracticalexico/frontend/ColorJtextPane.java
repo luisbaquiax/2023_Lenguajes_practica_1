@@ -6,7 +6,6 @@ package com.lenguajespracticalexico.frontend;
 
 import com.lenguajespracticalexico.analisiLexico.Afd;
 import java.awt.Color;
-import javax.annotation.RegEx;
 import javax.swing.JTextPane;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -26,12 +25,13 @@ public class ColorJtextPane {
     private final StyleContext cont = StyleContext.getDefaultStyleContext();
 
     //Colores 
-    private final AttributeSet OPERADORES_ARITMETICOS_CELESTE = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, new Color(0, 205, 255));
+    private final AttributeSet OPERADORES_ARITMETICOS_CELESTE = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, new Color(0, 191, 255));
     private final AttributeSet PALABRAS_CLAVE_MORADO = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, new Color(141, 51, 255));
     private final AttributeSet CONSTANTES_ROJO = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.RED);
     private final AttributeSet OTROS_GREEN = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, new Color(40, 180, 99));
     private final AttributeSet COMENTARIOS_GRAY = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.GRAY);
     private final AttributeSet IDENTIFICADORES = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.BLACK);
+    private final AttributeSet CONSTANTES = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground, Color.ORANGE);
 
     public ColorJtextPane(JTextPane textPane) {
         this.textPane = textPane;
@@ -87,7 +87,9 @@ public class ColorJtextPane {
 
                 while (indexFinal <= despues) {
                     if (indexFinal == despues || String.valueOf(text.charAt(indexFinal)).matches("\\W")) {
-                        if (text.substring(indexInicial, indexFinal).matches("(\\W)*" + afd.booleanas())) {
+                        if (text.substring(indexInicial, indexFinal).matches("([0-9]+|[0-9]+[\\.][0-9]+|[']*[']|[\"].*[\"])$")) {
+                            setCharacterAttributes(indexInicial, indexFinal - indexInicial, CONSTANTES, false);
+                        } else if (text.substring(indexInicial, indexFinal).matches("(\\W)*" + afd.booleanas())) {
                             setCharacterAttributes(indexInicial, indexFinal - indexInicial, CONSTANTES_ROJO, false);
                         } else if (text.substring(indexInicial, indexFinal).matches("(\\W)*" + afd.wordsKey())) {
                             setCharacterAttributes(indexInicial, indexFinal - indexInicial, PALABRAS_CLAVE_MORADO, false);
@@ -98,6 +100,8 @@ public class ColorJtextPane {
                             setCharacterAttributes(indexInicial, indexFinal - indexInicial, COMENTARIOS_GRAY, false);
                         } else if (text.substring(indexInicial, indexFinal).matches("(\\W)*(\\(|\\)|\\[|\\]|\\{|\\}|,|;|:)")) {
                             setCharacterAttributes(indexInicial, indexFinal - indexInicial, OTROS_GREEN, false);
+                        } else if (text.substring(indexInicial, indexFinal).matches("(\\W)*" + afd.booleanas())) {
+                            setCharacterAttributes(indexInicial, indexFinal - indexInicial, CONSTANTES_ROJO, false);
                         } else {
                             setCharacterAttributes(indexInicial, indexFinal - indexInicial, IDENTIFICADORES, false);
                         }
@@ -108,7 +112,7 @@ public class ColorJtextPane {
                 }
             }
 
-            public void romeve(int offs, int len) throws BadLocationException {
+            public void remover(int offs, int len) throws BadLocationException {
                 super.remove(offs, len);
 
                 String text = getText(0, getLength());

@@ -147,6 +147,13 @@ class AnalizadorLexico {
         return estadoSiguiente;
     }
 
+    /**
+     * Sirve para verificar si el estado actual está en la lista de estados
+     * aceptados
+     *
+     * @param estadoActual
+     * @return
+     */
     private boolean isEstadoAceptado(int estadoActual) {
         for (int i : afd.getEstadosAceptacion()) {
             if (i == estadoActual) {
@@ -156,18 +163,24 @@ class AnalizadorLexico {
         return false;
     }
 
+    /**
+     * Método que sirve para clasificar el tipo de token
+     *
+     * @param token
+     * @param estadoActual
+     */
     private void clasificarToken(Token token, int estadoActual) {
         switch (estadoActual) {
             case 1, 2 -> {
                 if (isWordKey(token)) {
                     token.setCategoria(TipoToken.PALABRA_CLAVE.toString());
-                    token.setPatron(ExpresionesRegulares.PALABRAS_CLAVE);
+                    token.setPatron(token.getLexema());
                 } else if (isBoolean(token)) {
                     token.setCategoria(TipoToken.BOOLEANAS.toString());
-                    token.setPatron(ExpresionesRegulares.PALABRAS_CLAVE);
+                    token.setPatron(token.getLexema());
                 } else if (isLogico(token)) {
                     token.setCategoria(TipoToken.OPERADOR_LOGICO.toString());
-                    token.setPatron(ExpresionesRegulares.PALABRAS_CLAVE);
+                    token.setPatron(token.getLexema());
                 } else {
                     token.setCategoria(TipoToken.IDENTIFICADOR.toString());
                     token.setPatron(ExpresionesRegulares.ID);

@@ -29,13 +29,6 @@ class Afd {
     private String[] operadoresAritmeticos;
     private int[] estados;
     private int[] estadosAceptacion;
-    public final static int S10 = 10;
-    public final static int S13 = 13;
-    public final static int S14 = 14;
-    public final static int S15 = 15;
-    public final static int S19 = 19;
-    public final static int S20 = 20;
-    public final static int S21 = 21;
 
     private int[][] transiciones;
 

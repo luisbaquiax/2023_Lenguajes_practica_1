@@ -613,7 +613,7 @@ public class VentanaParser extends javax.swing.JFrame {
 
     private void guardarComo() throws IOException {
         String ruta = this.manejoArchivo.pathChoserSave();
-        this.manejoArchivo.escribirArchivodeTexto(ruta, textPaneEditor.getText());
+        this.manejoArchivo.escribirArchivodeTexto(ruta + ManejoArchivo.FILTRO, textPaneEditor.getText());
     }
 
     private void llenarTabla(List<Token> tokens) {
