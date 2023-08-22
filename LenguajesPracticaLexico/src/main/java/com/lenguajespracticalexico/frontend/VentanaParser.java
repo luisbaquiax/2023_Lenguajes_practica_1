@@ -419,7 +419,8 @@ public class VentanaParser extends javax.swing.JFrame {
 
     private void menuItemListTokensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListTokensActionPerformed
         // TODO add your handling code here:
-        llenarTabla(analizadorLexico.getTokens());
+        auxiTokens = analizadorLexico.getTokens();
+        llenarTabla(auxiTokens);
     }//GEN-LAST:event_menuItemListTokensActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
