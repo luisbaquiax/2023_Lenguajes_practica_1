@@ -1,0 +1,8 @@
+digraph G {
+
+  "y" [shape=doublecircle]  subgraph cluster_0 {
+
+"t" -> "r" -> "y";
+    label = "PALABRA_CLAVE";
+  }
+}

@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+      </Properties>
+    </Component>
+    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="menuFile">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="File"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemOpenFile">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Abrir archivo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemOpenFileActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemNewFile">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nuevo archivo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemNewFileActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemSave">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Guardar cambios"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemSaveActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemSaveAs">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Guardar como"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemSaveAsActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuGraphiz">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" Generate graph"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mentuItenIdentificadores">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Identificadores"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mentuItenIdentificadoresActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemWordKeys">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Palabras reservadas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemWordKeysActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemLogicos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Logicos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemLogicosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mentuItemAsignacion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Asignaci&#xf3;n"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mentuItemAsignacionActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemEnteros">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Enteros"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemEnterosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemDecimal">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Decimales"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemDecimalActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemAritm&#xe9;ticos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Aritm&#xe9;ticos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemAritm&#xe9;ticosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mentuItemBooleanas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Booleanas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mentuItemBooleanasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemSignos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Signos (agrupaci&#xf3;n, otros)"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemSignosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemComentario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Comentarios"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemComentarioActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemStrings">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadenas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemStringsActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuReport">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Token report"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemListTokens">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Lista de tokens"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemListTokensActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuInfo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="About"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Informaci&#xf3;n-app"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+      </SubComponents>
+    </Menu>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jTabbedPane1" max="32767" attributes="0"/>
+              <Component id="jToolBar1" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <Component id="jToolBar1" min="-2" pref="39" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jTabbedPane1" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="panelEditor">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="">
+                    <Property name="tabTitle" type="java.lang.String" value=""/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="scrollPaneErrores" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelRowColumn" alignment="0" pref="1289" max="32767" attributes="0"/>
+                              <Component id="scrollPane" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="scrollPane" pref="438" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="labelRowColumn" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="scrollPaneErrores" min="-2" pref="152" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="scrollPaneErrores">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" value="Errores"/>
+                  </Properties>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextPane" name="textPaneErrores">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="33" green="0" red="ff" type="rgb"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JLabel" name="labelRowColumn">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Fila-Columna"/>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="scrollPane">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextPane" name="textPaneEditor">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="14" style="1"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="panelReport">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="">
+                    <Property name="tabTitle" type="java.lang.String" value=""/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" pref="1289" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" pref="621" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tableTokens">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="5" rowCount="0">
+                            <Column editable="false" title="Token" type="java.lang.Object"/>
+                            <Column editable="false" title="Lexema" type="java.lang.Object"/>
+                            <Column editable="false" title="Fila-columna" type="java.lang.Object"/>
+                            <Column editable="false" title="Patr&#xf3;n" type="java.lang.Object"/>
+                            <Column editable="false" title="Ver gr&#xe1;fica" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableTokensMouseClicked"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JToolBar" name="jToolBar1">
+          <Properties>
+            <Property name="rollover" type="boolean" value="true"/>
+          </Properties>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="btnAnalizaTokens">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Analizar tokens"/>
+                <Property name="focusable" type="boolean" value="false"/>
+                <Property name="horizontalTextPosition" type="int" value="2"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[104, 37]"/>
+                </Property>
+                <Property name="verticalTextPosition" type="int" value="3"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnalizaTokensActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JToolBar$Separator" name="jSeparator1">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnBackEditor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Regresar al editor"/>
+                <Property name="focusable" type="boolean" value="false"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[121, 37]"/>
+                </Property>
+                <Property name="verticalTextPosition" type="int" value="3"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackEditorActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
