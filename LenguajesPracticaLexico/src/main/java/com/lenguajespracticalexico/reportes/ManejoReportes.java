@@ -18,6 +18,16 @@ public class ManejoReportes {
     public ManejoReportes() {
     }
 
+    public List<Token> reportFilters(String textFilter, List<Token> tokens) {
+        List<Token> list = new ArrayList<>();
+        for (Token token : tokens) {
+            if (token.getLexema().contains(textFilter)) {
+                list.add(token);
+            }
+        }
+        return list;
+    }
+
     public List<Token> getIdentificadores(List<Token> tokens) {
         List<Token> list = new ArrayList<>();
         for (Token token : tokens) {

@@ -65,6 +65,8 @@ public class VentanaParser extends javax.swing.JFrame {
         LineNumberTextPane lineNumberTextPane2 = new LineNumberTextPane(textPaneErrores);
         scrollPaneErrores.setRowHeaderView(lineNumberTextPane2);
         this.btnBackEditor.setVisible(false);
+        this.txtFilter.setVisible(false);
+        this.labelFilter.setVisible(false);
         posicionPuntero();
 
     }
@@ -94,6 +96,10 @@ public class VentanaParser extends javax.swing.JFrame {
         btnAnalizaTokens = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         btnBackEditor = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
+        jPanel2 = new javax.swing.JPanel();
+        txtFilter = new javax.swing.JTextField();
+        labelFilter = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuItemOpenFile = new javax.swing.JMenuItem();
@@ -105,6 +111,7 @@ public class VentanaParser extends javax.swing.JFrame {
         menuItemWordKeys = new javax.swing.JMenuItem();
         menuItemLogicos = new javax.swing.JMenuItem();
         mentuItemAsignacion = new javax.swing.JMenuItem();
+        menuItemComparacion = new javax.swing.JMenuItem();
         menuItemEnteros = new javax.swing.JMenuItem();
         menuItemDecimal = new javax.swing.JMenuItem();
         menuItemAritméticos = new javax.swing.JMenuItem();
@@ -207,7 +214,7 @@ public class VentanaParser extends javax.swing.JFrame {
         btnAnalizaTokens.setText("Analizar tokens");
         btnAnalizaTokens.setFocusable(false);
         btnAnalizaTokens.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        btnAnalizaTokens.setPreferredSize(new java.awt.Dimension(104, 37));
+        btnAnalizaTokens.setPreferredSize(new java.awt.Dimension(120, 37));
         btnAnalizaTokens.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAnalizaTokens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,13 +235,49 @@ public class VentanaParser extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btnBackEditor);
+        jToolBar1.add(jSeparator2);
+
+        txtFilter.setToolTipText("Buscar token");
+        txtFilter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFilterKeyReleased(evt);
+            }
+        });
+
+        labelFilter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelFilter.setText("Buscar token por lexema");
+        labelFilter.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        labelFilter.setAlignmentY(0.3F);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelFilter)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(794, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelFilter))
+                .addContainerGap(7, Short.MAX_VALUE))
+        );
+
+        jToolBar1.add(jPanel2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane1)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,6 +356,14 @@ public class VentanaParser extends javax.swing.JFrame {
             }
         });
         menuGraphiz.add(mentuItemAsignacion);
+
+        menuItemComparacion.setText("Comparación");
+        menuItemComparacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemComparacionActionPerformed(evt);
+            }
+        });
+        menuGraphiz.add(menuItemComparacion);
 
         menuItemEnteros.setText("Enteros");
         menuItemEnteros.addActionListener(new java.awt.event.ActionListener() {
@@ -439,6 +490,8 @@ public class VentanaParser extends javax.swing.JFrame {
         this.jTabbedPane1.setSelectedIndex(0);
         this.btnAnalizaTokens.setVisible(true);
         this.btnBackEditor.setVisible(false);
+        this.txtFilter.setVisible(false);
+        this.labelFilter.setVisible(false);
     }//GEN-LAST:event_btnBackEditorActionPerformed
 
     private void menuItemOpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemOpenFileActionPerformed
@@ -572,6 +625,18 @@ public class VentanaParser extends javax.swing.JFrame {
         llenarTabla(auxiTokens);
     }//GEN-LAST:event_menuItemStringsActionPerformed
 
+    private void menuItemComparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemComparacionActionPerformed
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.getTokensComparacion(analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_menuItemComparacionActionPerformed
+
+    private void txtFilterKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFilterKeyReleased
+        // TODO add your handling code here:
+        auxiTokens = manejoReportes.reportFilters(txtFilter.getText(), analizadorLexico.getTokens());
+        llenarTabla(auxiTokens);
+    }//GEN-LAST:event_txtFilterKeyReleased
+
     /**
      * Servirá para encontrar la posición del puntero y eventualemente
      * actualizar su posición fila-columna
@@ -620,6 +685,8 @@ public class VentanaParser extends javax.swing.JFrame {
         this.jTabbedPane1.setSelectedIndex(1);
         this.btnAnalizaTokens.setVisible(false);
         this.btnBackEditor.setVisible(true);
+        this.txtFilter.setVisible(true);
+        this.labelFilter.setVisible(true);
         defaultTableModel = (DefaultTableModel) tableTokens.getModel();
         defaultTableModel.setRowCount(0);
         for (Token token : tokens) {
@@ -642,10 +709,13 @@ public class VentanaParser extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel labelFilter;
     private javax.swing.JLabel labelRowColumn;
     private javax.swing.JMenuItem mentuItemAsignacion;
     private javax.swing.JMenuItem mentuItemBooleanas;
@@ -655,6 +725,7 @@ public class VentanaParser extends javax.swing.JFrame {
     private javax.swing.JMenu menuInfo;
     private javax.swing.JMenuItem menuItemAritméticos;
     private javax.swing.JMenuItem menuItemComentario;
+    private javax.swing.JMenuItem menuItemComparacion;
     private javax.swing.JMenuItem menuItemDecimal;
     private javax.swing.JMenuItem menuItemEnteros;
     private javax.swing.JMenuItem menuItemListTokens;
@@ -674,5 +745,6 @@ public class VentanaParser extends javax.swing.JFrame {
     private javax.swing.JTable tableTokens;
     private javax.swing.JTextPane textPaneEditor;
     private javax.swing.JTextPane textPaneErrores;
+    private javax.swing.JTextField txtFilter;
     // End of variables declaration//GEN-END:variables
 }
