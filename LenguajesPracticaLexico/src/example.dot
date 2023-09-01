@@ -1,8 +1,8 @@
 digraph G {
 
-  "y" [shape=doublecircle]  subgraph cluster_0 {
+  "=" [shape=doublecircle]  subgraph cluster_0 {
 
-"t" -> "r" -> "y";
-    label = "PALABRA_CLAVE";
+"=" -> "=";
+    label = "OPERADOR_COMPARACION";
   }
 }
