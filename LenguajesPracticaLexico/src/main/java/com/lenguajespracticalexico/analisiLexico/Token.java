@@ -20,4 +20,5 @@ public class Token {
     private int fila;
     private int columna;
     private String patron;
+    private String subCategoria;
 }
