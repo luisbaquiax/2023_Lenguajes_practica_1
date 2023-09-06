@@ -4,8 +4,10 @@
  */
 package com.lenguajespracticalexico.analisiLexico;
 
+import java.util.HashMap;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.lenguajespracticalexico.analisiLexico.enums.TipoToken;
 
 /**
  *
@@ -27,6 +29,9 @@ class Afd {
     private String[] simboloAsignacion;
     private String[] comparadores;
     private String[] operadoresAritmeticos;
+
+    private HashMap<String, String> diccionario;
+
     private int[] estados;
     private int[] estadosAceptacion;
 
@@ -63,18 +68,56 @@ class Afd {
             "with",
             "yield"
         };
+        this.diccionario = new HashMap<>();
         //constantes
         this.booleanas = new String[]{"True", "False"};
+        this.diccionario.put("True", "True");
+        this.diccionario.put("False", "False");
+
         /**
          *
          */
         this.simboloAsignacion = new String[]{"=", "*=", "**=", "/=", "//=", "+=", "-=", "%="};
+        this.diccionario.put(TipoToken.OPERADOR_ASIGNACION_IGUAL.toString(), "=");
+        this.diccionario.put(TipoToken.OPERADOR_ASIGNACION_POR_IGUAL.toString(), "*=");
+        this.diccionario.put(TipoToken.OPERADOR_ASIGNACION_EXPONENTE_IGUAL.toString(), "**=");
+        this.diccionario.put(TipoToken.OPERADOR_ASIGNACION_DIV_IGUAL.toString(), "/=");
+        this.diccionario.put(TipoToken.OPERADOR_ASIGNACION_DIV_2_IGUAL.toString(), "//=");
+        this.diccionario.put(TipoToken.OPERADOR_ASIGNACION_MAS_IGUAL.toString(), "+=");
+        this.diccionario.put(TipoToken.OPERADOR_ASIGNACION_MENOS_IGUAL.toString(), "-=");
+        this.diccionario.put(TipoToken.OPERADOR_ASIGNACION_MODULO_IGUAL.toString(), "%=");
 
         this.operadoresLogicos = new String[]{"and", "or", "not"};
+        this.diccionario.put(TipoToken.OPERADOR_LOGICO_AND.toString(), "and");
+        this.diccionario.put(TipoToken.OPERADOR_LOGICO_OR.toString(), "or");
+        this.diccionario.put(TipoToken.OPERADOR_LOGICO_NOT.toString(), "not");
 
         this.comparadores = new String[]{"==", "!=", ">", "<", ">=", "<="};
+        this.diccionario.put(TipoToken.OPERADOR_COMPARACION_IGUAL.toString(), "==");
+        this.diccionario.put(TipoToken.OPERADOR_COMPARACION_DIFERENTE.toString(), "!=");
+        this.diccionario.put(TipoToken.OPERADOR_COMPARACION_MAYOR_QUE.toString(), ">");
+        this.diccionario.put(TipoToken.OPERADOR_COMPARACION_MENOR_QUE.toString(), "<");
+        this.diccionario.put(TipoToken.OPERADOR_COMPARACION_MAYOR_IGUAL.toString(), ">=");
+        this.diccionario.put(TipoToken.OPERADOR_COMPARACION_MENOR_IGUAL.toString(), "<=");
 
         this.operadoresAritmeticos = new String[]{"+", "-", "**", "/", "//", "%", "*"};
+        this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_MAS.toString(), "+");
+        this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_MENOS.toString(), "-");
+        this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_EXPONENTE.toString(), "**");
+        this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_DIV.toString(), "/");
+        this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_DIV_2.toString(), "//");
+        this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_MODULO.toString(), "%");
+        this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_MULTI.toString(), "*");
+
+        this.diccionario.put(TipoToken.SIGNOS_PAREN_OPEN.toString(), "(");
+        this.diccionario.put(TipoToken.SIGNOS_PAREN_CLOSE.toString(), ")");
+        this.diccionario.put(TipoToken.SIGNOS_CORCHETE_OPEN.toString(), "[");
+        this.diccionario.put(TipoToken.SIGNOS_CORCHETE_CLOSE.toString(), "]");
+        this.diccionario.put(TipoToken.SIGNOS_LLAVE_OPEN.toString(), "{");
+        this.diccionario.put(TipoToken.SIGNOS_LLAVE_CLOSE.toString(), "}");
+        this.diccionario.put(TipoToken.SIGNOS_COMA.toString(), ",");
+        this.diccionario.put(TipoToken.SIGNOS_DOS_PUNTOS.toString(), ":");
+        this.diccionario.put(TipoToken.SIGNOS_PUNTO_COMA.toString(), ";");
 
         this.estados = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
 
