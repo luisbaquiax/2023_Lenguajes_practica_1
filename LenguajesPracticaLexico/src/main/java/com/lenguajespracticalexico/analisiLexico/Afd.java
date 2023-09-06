@@ -6,7 +6,6 @@ package com.lenguajespracticalexico.analisiLexico;
 
 import java.util.HashMap;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import com.lenguajespracticalexico.analisiLexico.enums.TipoToken;
 
 /**
