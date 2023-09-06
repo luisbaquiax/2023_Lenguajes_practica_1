@@ -7,7 +7,9 @@ package com.lenguajespracticalexico.analisiLexico;
 import com.lenguajespracticalexico.analisiLexico.enums.ErrorToken;
 import com.lenguajespracticalexico.analisiLexico.enums.TipoToken;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lombok.Data;
 
 /**
@@ -121,7 +123,7 @@ class AnalizadorLexico {
      * @param estadoActual
      */
     private void crearToken(String stringToken, int fila, int columna, int estadoActual) {
-        Token tokenNew = new Token(stringToken, "", fila, columna + 1, "");
+        Token tokenNew = new Token(stringToken, "", fila, columna + 1, "", "");
         if (isEstadoAceptado(estadoActual)) {
             clasificarToken(tokenNew, estadoActual);
             tokens.add(tokenNew);
@@ -170,11 +172,18 @@ class AnalizadorLexico {
      * @param estadoActual
      */
     private void clasificarToken(Token token, int estadoActual) {
+        for (Map.Entry<String, String> element : afd.getDiccionario().entrySet()) {
+            if (element.getValue().equals(token.getLexema())) {
+                token.setSubCategoria(element.getKey());
+                break;
+            }
+        }
         switch (estadoActual) {
             case 1, 2 -> {
                 if (isWordKey(token)) {
                     token.setCategoria(TipoToken.PALABRA_CLAVE.toString());
                     token.setPatron(token.getLexema());
+                    token.setSubCategoria(TipoToken.PALABRA_CLAVE.toString());
                 } else if (isBoolean(token)) {
                     token.setCategoria(TipoToken.BOOLEANAS.toString());
                     token.setPatron(token.getLexema());
@@ -184,6 +193,7 @@ class AnalizadorLexico {
                 } else {
                     token.setCategoria(TipoToken.IDENTIFICADOR.toString());
                     token.setPatron(ExpresionesRegulares.ID);
+                    token.setSubCategoria(TipoToken.IDENTIFICADOR.toString());
                 }
             }
             case 3, 4, 5, 6, 7 -> {
@@ -216,10 +226,12 @@ class AnalizadorLexico {
             case 12 -> {
                 token.setCategoria(TipoToken.ENTERO.toString());
                 token.setPatron(ExpresionesRegulares.ENTERO);
+                token.setSubCategoria(TipoToken.ENTERO.toString());
             }
             case 15 -> {
                 token.setCategoria(TipoToken.COMENTARIO.toString());
                 token.setPatron(ExpresionesRegulares.COMENTARIO);
+                token.setSubCategoria(TipoToken.COMENTARIO.toString());
             }
             case 16, 17 -> {
                 token.setCategoria(TipoToken.OPERADOR_ARITMÉTICO.toString());
@@ -228,10 +240,12 @@ class AnalizadorLexico {
             case 21 -> {
                 token.setCategoria(TipoToken.COMENTARIO.toString());
                 token.setPatron(ExpresionesRegulares.COMENTARIO);
+                token.setSubCategoria(TipoToken.COMENTARIO.toString());
             }
             case 22 -> {
                 token.setCategoria(TipoToken.DECIMAL.toString());
                 token.setPatron(ExpresionesRegulares.DECIMAL);
+                token.setSubCategoria(TipoToken.DECIMAL.toString());
             }
         }
     }
