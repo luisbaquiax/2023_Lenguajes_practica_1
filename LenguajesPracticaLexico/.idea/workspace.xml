@@ -5,59 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1385406e-2c7a-4f63-8b56-b2ccb4f6a087" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Documentación/tabla siguientes práctica1 lenguajes 2023.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentación/tabla siguientes práctica1 lenguajes 2023.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/example.dot" beforeDir="false" afterPath="$PROJECT_DIR$/src/example.dot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/holaGraphiz.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/holaGraphiz.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/Afd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/Afd.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/AnalizadorLexico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/CaracterPosicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/CaracterPosicion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/enums/TipoToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/enums/TipoToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/frontend/VentanaParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/frontend/VentanaParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.netbeans_automatic_build" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/LenguajesPractica1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/LenguajesPractica1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/Afd.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/Afd.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/AnalizadorLexico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/AnalizadorLexico.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/CaracterPosicion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/CaracterPosicion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/enums/ErrorToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/enums/ErrorToken.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/enums/TipoToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/enums/TipoToken.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/ColorJtextPane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/ColorJtextPane$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/ColorJtextPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/ColorJtextPane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/GraficaFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/GraficaFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/GraficaFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/GraficaFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/LineNumberTextPane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/LineNumberTextPane$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/LineNumberTextPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/LineNumberTextPane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/Utiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/Utiles.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$16.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$17.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$18.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$19.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$20.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$21.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$22.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$23.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$23.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$24.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$24.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/frontend/VentanaParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/graphiz/ManejoGrafica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/graphiz/ManejoGrafica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/manejoArchivos/ManejoArchivo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/manejoArchivos/ManejoArchivo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/reportes/ManejoReportes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/reportes/ManejoReportes.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,21 +24,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Usuario/OneDrive/Documentos/NetBeansProjects/2023_Lenguajes_practica_1/LenguajesPracticaLexico",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Usuario/OneDrive/Documentos/NetBeansProjects/2023_Lenguajes_practica_1/LenguajesPracticaLexico&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="LenguajesPractica1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lenguajespracticalexico.LenguajesPractica1" />
@@ -118,6 +70,7 @@
       <workItem from="1692638883517" duration="1105000" />
       <workItem from="1692640541960" duration="1491000" />
       <workItem from="1695275788960" duration="2568000" />
+      <workItem from="1695321770893" duration="1863000" />
     </task>
     <servers />
   </component>
