@@ -219,6 +219,9 @@ class AnalizadorLexico {
                 } else if (token.getLexema().equals(" ")) {
                     token.setCategoria(TipoToken.TOKEN_ESPECIAL_ESPACIO.toString());
                     token.setPatron(" ");
+                } else if (token.getLexema().equals(TipoToken.OPERADOR_TERNARIO.value)) {
+                    token.setCategoria(TipoToken.OPERADOR_TERNARIO.toString());
+                    token.setPatron(TipoToken.OPERADOR_TERNARIO.value);
                 } else {
                     token.setCategoria(TipoToken.CADENA.toString());
                     token.setPatron(ExpresionesRegulares.CADENA);
