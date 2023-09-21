@@ -6,14 +6,15 @@ package com.lenguajespracticalexico.analisiLexico;
 
 import com.lenguajespracticalexico.analisiLexico.enums.ErrorToken;
 import com.lenguajespracticalexico.analisiLexico.enums.TipoToken;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import lombok.Data;
 
 /**
- *
  * @author luis
  */
 public @Data
@@ -103,7 +104,8 @@ class AnalizadorLexico {
                     estadoActual = 0;
                 }
             } else {
-                if (!Character.isSpaceChar(temp) && temp != '\n') {
+                //validamos si existe algún símbolo que no esté en el alfabeto o símbolos permitidos
+                if (temp != '\n') {
                     stringToken += temp;
                     crearToken(stringToken, fila, columna, estadoActual);
                     stringToken = "";
@@ -143,7 +145,7 @@ class AnalizadorLexico {
     private int siguienteEstado(char caracter) {
         int estadoSiguiente = -1;
         if (caracterPosicion.getPosicionCaracter(caracter) >= 0
-                && (caracterPosicion.getPosicionCaracter(caracter) < afd.getTransiciones()[0].length)) {
+            && (caracterPosicion.getPosicionCaracter(caracter) < afd.getTransiciones()[0].length)) {
             estadoSiguiente = afd.getTransiciones()[estadoActual][this.caracterPosicion.getPosicionCaracter(caracter)];
         }
         return estadoSiguiente;
@@ -214,6 +216,9 @@ class AnalizadorLexico {
                 } else if (isSImbolo(token)) {
                     token.setCategoria(TipoToken.SIGNOS.toString());
                     token.setPatron(ExpresionesRegulares.OTROS);
+                } else if (token.getLexema().equals(" ")) {
+                    token.setCategoria(TipoToken.TOKEN_ESPECIAL_ESPACIO.toString());
+                    token.setPatron(" ");
                 } else {
                     token.setCategoria(TipoToken.CADENA.toString());
                     token.setPatron(ExpresionesRegulares.CADENA);
@@ -251,6 +256,7 @@ class AnalizadorLexico {
     }
 
     /**
+     * Verifica si el token es una palabra reservada
      *
      * @param token
      * @return
@@ -265,6 +271,7 @@ class AnalizadorLexico {
     }
 
     /**
+     * Return true if token is True or False
      *
      * @param token
      * @return
@@ -279,6 +286,7 @@ class AnalizadorLexico {
     }
 
     /**
+     * Retrun true if token is an operator logico
      *
      * @param token
      * @return
@@ -292,6 +300,12 @@ class AnalizadorLexico {
         return false;
     }
 
+    /**
+     * Return true if token is an Comparator
+     *
+     * @param token
+     * @return
+     */
     public boolean isComparador(Token token) {
         for (String wordKey : afd.getComparadores()) {
             if (token.getLexema().equals(wordKey)) {
@@ -301,6 +315,12 @@ class AnalizadorLexico {
         return false;
     }
 
+    /**
+     * Retrun true if token is an symbol asignacion
+     *
+     * @param token
+     * @return
+     */
     public boolean isAsignacion(Token token) {
         for (String wordKey : afd.getSimboloAsignacion()) {
             if (token.getLexema().equals(wordKey)) {
@@ -310,6 +330,12 @@ class AnalizadorLexico {
         return false;
     }
 
+    /**
+     * Return true if token is a symbol of Grammar
+     *
+     * @param token
+     * @return
+     */
     public boolean isSImbolo(Token token) {
         for (char wordKey : Afd.OTROS_SIMBOLOS.toCharArray()) {
             if (token.getLexema().equals(String.valueOf(wordKey))) {

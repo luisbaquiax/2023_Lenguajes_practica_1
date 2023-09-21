@@ -5,7 +5,6 @@
 package com.lenguajespracticalexico.analisiLexico;
 
 /**
- *
  * @author luis
  */
 public class CaracterPosicion {
@@ -70,13 +69,13 @@ public class CaracterPosicion {
             posicion = 22;
         } else if (caracter == ':') {
             posicion = 23;
-        } else if (caracter == ' ') {
+        } else if (caracter == ' ' /*|| caracter == '\n' || caracter == '\t'*/) {
             posicion = 24;
         } else if (caracter == '.') {
             posicion = 25;
         } else if (caracter == '\n') {
             posicion = -1;
-        } else {
+        }  else {
             posicion = 26;
         }
 
