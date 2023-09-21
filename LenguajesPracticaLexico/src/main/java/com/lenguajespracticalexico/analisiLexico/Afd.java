@@ -6,7 +6,6 @@ package com.lenguajespracticalexico.analisiLexico;
 
 import java.util.HashMap;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import com.lenguajespracticalexico.analisiLexico.enums.TipoToken;
 
 /**
@@ -119,6 +118,8 @@ class Afd {
         this.diccionario.put(TipoToken.SIGNOS_DOS_PUNTOS.toString(), ":");
         this.diccionario.put(TipoToken.SIGNOS_PUNTO_COMA.toString(), ";");
 
+        this.diccionario.put(TipoToken.TOKEN_ESPECIAL_ESPACIO.toString(), " ");
+
         this.estados = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
 
         this.estadosAceptacion = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, 21, 22, 23};
@@ -156,7 +157,7 @@ class Afd {
 
     private void matrizTransiciones() {
         this.transiciones = new int[][]{
-            {+1, 12, +2, +3, +4, +5, +6, +7, +8, +9, 23, 11, 13, 14, 15, 10, 10, 10, 10, 10, 10, 10, 10, 10, -1, -1, -1},//0
+            {+1, 12, +2, +3, +4, +5, +6, +7, +8, +9, 23, 11, 13, 14, 15, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, -1, -1},//0
             {+1, +2, +2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},//1
             {+2, +2, +2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},//2
             {-1, -1, -1, -1, -1, -1, -1, -1, 10, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},//3
