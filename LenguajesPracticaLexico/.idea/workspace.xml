@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1385406e-2c7a-4f63-8b56-b2ccb4f6a087" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Documentación/tabla siguientes práctica1 lenguajes 2023.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Documentación/tabla siguientes práctica1 lenguajes 2023.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/Afd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/Afd.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/AnalizadorLexico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/CaracterPosicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/CaracterPosicion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/enums/TipoToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lenguajespracticalexico/analisiLexico/enums/TipoToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/Afd.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/Afd.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/AnalizadorLexico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/AnalizadorLexico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/enums/TipoToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lenguajespracticalexico/analisiLexico/enums/TipoToken.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
