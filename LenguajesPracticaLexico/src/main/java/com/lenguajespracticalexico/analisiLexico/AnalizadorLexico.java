@@ -145,7 +145,7 @@ class AnalizadorLexico {
     private int siguienteEstado(char caracter) {
         int estadoSiguiente = -1;
         if (caracterPosicion.getPosicionCaracter(caracter) >= 0
-            && (caracterPosicion.getPosicionCaracter(caracter) < afd.getTransiciones()[0].length)) {
+                && (caracterPosicion.getPosicionCaracter(caracter) < afd.getTransiciones()[0].length)) {
             estadoSiguiente = afd.getTransiciones()[estadoActual][this.caracterPosicion.getPosicionCaracter(caracter)];
         }
         return estadoSiguiente;
@@ -222,6 +222,9 @@ class AnalizadorLexico {
                 } else if (token.getLexema().equals(TipoToken.OPERADOR_TERNARIO.value)) {
                     token.setCategoria(TipoToken.OPERADOR_TERNARIO.toString());
                     token.setPatron(TipoToken.OPERADOR_TERNARIO.value);
+                } else if (token.getLexema().equals(TipoToken.TOKEN_PUNTO.value)) {
+                    token.setCategoria(TipoToken.TOKEN_PUNTO.toString());
+                    token.setPatron(TipoToken.TOKEN_PUNTO.value);
                 } else {
                     token.setCategoria(TipoToken.CADENA.toString());
                     token.setPatron(ExpresionesRegulares.CADENA);
