@@ -13,7 +13,6 @@ import javax.swing.text.Document;
 import javax.swing.text.Element;
 
 /**
- *
  * @author luis
  */
 public class LineNumberTextPane extends JTextPane {
