@@ -105,7 +105,7 @@ class AnalizadorLexico {
                 }
             } else {
                 //validamos si existe algún símbolo que no esté en el alfabeto o símbolos permitidos
-                if (temp != '\n') {
+                if (temp != '\n' && (int)temp!=13) {
                     stringToken += temp;
                     crearToken(stringToken, fila, columna, estadoActual);
                     stringToken = "";

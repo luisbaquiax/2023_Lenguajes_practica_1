@@ -649,8 +649,8 @@ public class VentanaParser extends javax.swing.JFrame {
                 int pos = e.getDot();
                 int fila = 1, columna = 0;
                 int ultimalinea = -1;
-                //String text = textPaneEditor.getText().replaceAll("\r", "");
-                String text = textPaneEditor.getText();
+                String text = textPaneEditor.getText().replaceAll("\r", "");
+                //String text = textPaneEditor.getText();
 
                 for (int i = 0; i < pos; i++) {
                     //char == 10 -> salto de linea o nueva linea
