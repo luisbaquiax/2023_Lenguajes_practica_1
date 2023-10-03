@@ -118,7 +118,7 @@ class Afd {
         this.diccionario.put(TipoToken.SIGNOS_DOS_PUNTOS.toString(), ":");
         this.diccionario.put(TipoToken.SIGNOS_PUNTO_COMA.toString(), ";");
 
-        this.diccionario.put(TipoToken.TOKEN_ESPECIAL_ESPACIO.toString(), " ");
+        this.diccionario.put(TipoToken.ESPACIO.toString(), " ");
         this.diccionario.put(TipoToken.TOKEN_PUNTO.toString(), TipoToken.TOKEN_PUNTO.value);
         this.diccionario.put(TipoToken.OPERADOR_TERNARIO.toString(), TipoToken.OPERADOR_TERNARIO.value);
         this.estados = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};

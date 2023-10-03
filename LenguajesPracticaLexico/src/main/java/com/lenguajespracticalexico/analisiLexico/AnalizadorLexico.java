@@ -8,7 +8,6 @@ import com.lenguajespracticalexico.analisiLexico.enums.ErrorToken;
 import com.lenguajespracticalexico.analisiLexico.enums.TipoToken;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -65,10 +64,10 @@ class AnalizadorLexico {
         } catch (Exception e) {
 
         }
-        System.out.println("tokens");
+        /*System.out.println("tokens");
         tokens.forEach((list) -> System.out.println(list.toString()));
         System.out.println("errores");
-        tokenErrores.forEach((list) -> System.out.println(list.toString()));
+        tokenErrores.forEach((list) -> System.out.println(list.toString()));*/
     }
 
     /**
@@ -217,7 +216,7 @@ class AnalizadorLexico {
                     token.setCategoria(TipoToken.SIGNOS.toString());
                     token.setPatron(ExpresionesRegulares.OTROS);
                 } else if (token.getLexema().equals(" ")) {
-                    token.setCategoria(TipoToken.TOKEN_ESPECIAL_ESPACIO.toString());
+                    token.setCategoria(TipoToken.ESPACIO.toString());
                     token.setPatron(" ");
                 } else if (token.getLexema().equals(TipoToken.OPERADOR_TERNARIO.value)) {
                     token.setCategoria(TipoToken.OPERADOR_TERNARIO.toString());

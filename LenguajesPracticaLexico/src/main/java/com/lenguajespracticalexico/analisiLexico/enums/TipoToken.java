@@ -56,7 +56,7 @@ public enum TipoToken {
     SIGNOS_COMA(","),
     SIGNOS_PUNTO_COMA(";"),
     SIGNOS_DOS_PUNTOS(":"),
-    TOKEN_ESPECIAL_ESPACIO(" "),
+    ESPACIO(" "),
     OPERADOR_TERNARIO("?"),
     TOKEN_PUNTO(".");
 
