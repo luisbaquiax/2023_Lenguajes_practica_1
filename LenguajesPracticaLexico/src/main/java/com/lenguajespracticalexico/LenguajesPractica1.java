@@ -18,7 +18,7 @@ import java.util.List;
 public class LenguajesPractica1 {
 
     public static void main(String[] args) {
-        //new VentanaParser().show();
+        //new VentanaParser().setVisible(true);
         AnalizadorLexico analizadorLexico = new AnalizadorLexico();
         analizadorLexico.analizarTokens("def funcion1():\n" +
                                         "  hola\n" +
