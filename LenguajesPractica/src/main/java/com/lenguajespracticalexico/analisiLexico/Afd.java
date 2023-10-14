@@ -101,16 +101,16 @@ class Afd {
         this.diccionario.put(TipoToken.OPERADOR_COMPARACION_MENOR_IGUAL.toString(), "<=");
 
         this.operadoresAritmeticos = new String[]{"+", "-", "**", "/", "//", "%", "*"};
-        this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_MAS.toString(), "+");
-        this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_MENOS.toString(), "-");
+        this.diccionario.put(TipoToken.OPERADOR_ARITMETICO_MAS.toString(), "+");
+        this.diccionario.put(TipoToken.OPERADOR_ARITMETICO_MENOS.toString(), "-");
         this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_EXPONENTE.toString(), "**");
         this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_DIV.toString(), "/");
         this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_DIV_2.toString(), "//");
         this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_MODULO.toString(), "%");
         this.diccionario.put(TipoToken.OPERADOR_ARITMÉTICO_MULTI.toString(), "*");
 
-        this.diccionario.put(TipoToken.SIGNOS_PAREN_OPEN.toString(), "(");
-        this.diccionario.put(TipoToken.SIGNOS_PAREN_CLOSE.toString(), ")");
+        this.diccionario.put(TipoToken.PARENTESIS_OPEN.toString(), "(");
+        this.diccionario.put(TipoToken.PARENTESIS_CLOSE.toString(), ")");
         this.diccionario.put(TipoToken.SIGNOS_CORCHETE_OPEN.toString(), "[");
         this.diccionario.put(TipoToken.SIGNOS_CORCHETE_CLOSE.toString(), "]");
         this.diccionario.put(TipoToken.SIGNOS_LLAVE_OPEN.toString(), "{");

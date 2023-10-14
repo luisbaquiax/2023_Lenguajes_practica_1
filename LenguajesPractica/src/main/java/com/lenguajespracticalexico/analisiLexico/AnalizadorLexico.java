@@ -242,7 +242,7 @@ class AnalizadorLexico {
             case 12 -> {
                 token.setCategoria(TipoToken.ENTERO.toString());
                 token.setPatron(ExpresionesRegulares.ENTERO);
-                token.setSubCategoria(TipoToken.ENTERO.toString());
+                token.setSubCategoria(TipoToken.NUMERO.toString());
             }
             case 15, 21 -> {
                 token.setCategoria(TipoToken.COMENTARIO.toString());
@@ -252,7 +252,7 @@ class AnalizadorLexico {
             case 22 -> {
                 token.setCategoria(TipoToken.DECIMAL.toString());
                 token.setPatron(ExpresionesRegulares.DECIMAL);
-                token.setSubCategoria(TipoToken.DECIMAL.toString());
+                token.setSubCategoria(TipoToken.NUMERO.getValue());
             }
         }
     }

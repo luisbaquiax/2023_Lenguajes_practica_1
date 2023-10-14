@@ -9,8 +9,8 @@ package com.lenguajespracticalexico.analisiLexico.enums;
  */
 public enum TipoToken {
     OPERADOR_ARITMÉTICO("OPERADOR_ARITMÉTICO"),
-    OPERADOR_ARITMÉTICO_MAS("+"),
-    OPERADOR_ARITMÉTICO_MENOS("-"),
+    OPERADOR_ARITMETICO_MAS("+"),
+    OPERADOR_ARITMETICO_MENOS("-"),
     OPERADOR_ARITMÉTICO_MULTI("*"),
     OPERADOR_ARITMÉTICO_DIV("/"),
     OPERADOR_ARITMÉTICO_DIV_2("//"),
@@ -46,8 +46,8 @@ public enum TipoToken {
     TRUE("True"),
     COMENTARIO("COMENTARIO"),
     SIGNOS("SIGNOS"),
-    SIGNOS_PAREN_OPEN("("),
-    SIGNOS_PAREN_CLOSE(")"),
+    PARENTESIS_OPEN("("),
+    PARENTESIS_CLOSE(")"),
     SIGNOS_CORCHETE_OPEN("["),
     SIGNOS_CORCHETE_CLOSE("]"),
     SIGNOS_LLAVE_OPEN("{"),
@@ -62,7 +62,8 @@ public enum TipoToken {
     NOT("not"),
     AND("and"),
     OR("or"),
-    SALTO_LINEA("\n");
+    SALTO_LINEA("\n"),
+    NUMERO("NUMERO");
 
     public String value;
 
