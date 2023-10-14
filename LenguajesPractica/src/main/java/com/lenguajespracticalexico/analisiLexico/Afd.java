@@ -66,7 +66,8 @@ class Afd {
                 "while",
                 "with",
                 "yield",
-                "print"
+                "print",
+                "range"
         };
         this.diccionario = new HashMap<>();
         //constantes
@@ -78,7 +79,7 @@ class Afd {
          *
          */
         this.simboloAsignacion = new String[]{"=", "*=", "**=", "/=", "//=", "+=", "-=", "%="};
-        this.diccionario.put(TipoToken.OPERADOR_ASIGNACION_IGUAL.toString(), "=");
+        this.diccionario.put(TipoToken.SIGNO_IGUAL.toString(), "=");
         this.diccionario.put(TipoToken.OPERADOR_ASIGNACION_POR_IGUAL.toString(), "*=");
         this.diccionario.put(TipoToken.OPERADOR_ASIGNACION_EXPONENTE_IGUAL.toString(), "**=");
         this.diccionario.put(TipoToken.OPERADOR_ASIGNACION_DIV_IGUAL.toString(), "/=");
@@ -111,9 +112,9 @@ class Afd {
 
         this.diccionario.put(TipoToken.PARENTESIS_OPEN.toString(), "(");
         this.diccionario.put(TipoToken.PARENTESIS_CLOSE.toString(), ")");
-        this.diccionario.put(TipoToken.SIGNOS_CORCHETE_OPEN.toString(), "[");
+        this.diccionario.put(TipoToken.CORCHETE_OPEN.toString(), "[");
         this.diccionario.put(TipoToken.SIGNOS_CORCHETE_CLOSE.toString(), "]");
-        this.diccionario.put(TipoToken.SIGNOS_LLAVE_OPEN.toString(), "{");
+        this.diccionario.put(TipoToken.LLAVE_OPEN.toString(), "{");
         this.diccionario.put(TipoToken.SIGNOS_LLAVE_CLOSE.toString(), "}");
         this.diccionario.put(TipoToken.SIGNOS_COMA.toString(), ",");
         this.diccionario.put(TipoToken.SIGNOS_DOS_PUNTOS.toString(), ":");

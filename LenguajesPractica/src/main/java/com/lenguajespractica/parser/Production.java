@@ -198,17 +198,17 @@ public class Production {
             p = this.producciones.get(43);
         } else if ((token.getSubCategoria().equals(TipoToken.PARENTESIS_OPEN.getValue()) && producion.equals("VALOR"))) {
             p = this.producciones.get(11);
-        } else if ((token.getSubCategoria().equals(TipoToken.SIGNOS_CORCHETE_OPEN.getValue()) && producion.equals("VALOR"))) {
+        } else if ((token.getSubCategoria().equals(TipoToken.CORCHETE_OPEN.getValue()) && producion.equals("VALOR"))) {
             p = this.producciones.get(5);
-        } else if ((token.getSubCategoria().equals(TipoToken.SIGNOS_LLAVE_OPEN.getValue()) && producion.equals("VALOR"))) {
+        } else if ((token.getSubCategoria().equals(TipoToken.LLAVE_OPEN.getValue()) && producion.equals("VALOR"))) {
             p = this.producciones.get(6);
         }
         //ARREGLO
-        else if ((token.getSubCategoria().equals(TipoToken.SIGNOS_CORCHETE_OPEN.getValue()) && producion.equals("ARREGLO"))) {
+        else if ((token.getSubCategoria().equals(TipoToken.CORCHETE_OPEN.getValue()) && producion.equals("ARREGLO"))) {
             p = this.producciones.get(44);
         }
         //DICCIONARIO
-        else if ((token.getSubCategoria().equals(TipoToken.SIGNOS_LLAVE_OPEN.getValue()) && producion.equals("DICCIONARIO"))) {
+        else if ((token.getSubCategoria().equals(TipoToken.LLAVE_OPEN.getValue()) && producion.equals("DICCIONARIO"))) {
             p = this.producciones.get(46);
         }
         //VALUE_ARRAY
@@ -339,11 +339,194 @@ public class Production {
         //SEPARADOR
         else if ((token.getSubCategoria().equals(TipoToken.ID.getValue())
                 || token.getSubCategoria().equals(TipoToken.NUMERO.getValue())
+                || token.getSubCategoria().equals(TipoToken.CADENA.getValue())
                 || token.getSubCategoria().equals(TipoToken.TRUE.getValue())
-                || token.getSubCategoria().equals(TipoToken.PARENTESIS_OPEN.getValue())
+                || token.getSubCategoria().equals(TipoToken.FALSE.getValue())
+                || token.getSubCategoria().equals(TipoToken.PARENTESIS_CLOSE.getValue())
+                || token.getSubCategoria().equals(TipoToken.SIGNOS_CORCHETE_CLOSE.getValue())
+                || token.getSubCategoria().equals(TipoToken.SIGNOS_LLAVE_CLOSE.getValue())
         )
                 && producion.equalsIgnoreCase("SEPARADOR")) {
-            p = this.producciones.get(60);
+            p = this.producciones.get(109);
+        } else if (token.getSubCategoria().equals(",") && producion.equalsIgnoreCase("SEPARADOR")) {
+            p = new String[]{","};
+        }
+        //PARAMS
+        else if ((token.getSubCategoria().equals(TipoToken.ID.getValue())
+                || token.getSubCategoria().equals(TipoToken.CADENA.getValue())
+                || token.getSubCategoria().equals(TipoToken.NUMERO.getValue())
+                || token.getSubCategoria().equals(TipoToken.TRUE.getValue())
+                || token.getSubCategoria().equals(TipoToken.FALSE.getValue())
+                || token.getSubCategoria().equals(TipoToken.PARENTESIS_OPEN.getValue())
+                || token.getSubCategoria().equals(TipoToken.CORCHETE_OPEN.getValue())
+                || token.getSubCategoria().equals(TipoToken.LLAVE_OPEN.getValue())
+        )
+                && producion.equalsIgnoreCase("PARAMS")) {
+            p = this.producciones.get(65);
+        } else if (token.getSubCategoria().equals(TipoToken.PARENTESIS_CLOSE.getValue()) && producion.equalsIgnoreCase("PARAMS")) {
+            p = this.producciones.get(109);
+        }
+        //break
+        else if (token.getSubCategoria().equals("break") && producion.equalsIgnoreCase("BREAK")) {
+            p = new String[]{"break"};
+        }
+        //END_IF
+        else if (token.getSubCategoria().equals("else") && producion.equalsIgnoreCase("END_IF")) {
+            p = this.producciones.get(71);
+        } else if (token.getSubCategoria().equals("elif") && producion.equalsIgnoreCase("END_IF")) {
+            p = this.producciones.get(72);
+        }
+        //FOR_OPCION
+        else if (token.getSubCategoria().equals(TipoToken.ID.getValue()) && producion.equalsIgnoreCase("FOR_OPCION")) {
+            p = new String[]{TipoToken.ID.getValue()};
+        } else if (token.getSubCategoria().equals(TipoToken.CORCHETE_OPEN.getValue()) && producion.equalsIgnoreCase("FOR_OPCION")) {
+            p = this.producciones.get(5);
+        } else if (token.getSubCategoria().equals("range") && producion.equalsIgnoreCase("FOR_OPCION")) {
+            p = this.producciones.get(73);
+        }
+        //RANGE_PARAM
+        else if (token.getSubCategoria().equals(TipoToken.ID.getValue()) && producion.equalsIgnoreCase("RANGE_PARAM")) {
+            p = this.producciones.get(74);
+        } else if (token.getSubCategoria().equals(TipoToken.NUMERO.getValue()) && producion.equalsIgnoreCase("RANGE_PARAM")) {
+            p = this.producciones.get(74);
+        } else if (token.getSubCategoria().equals(TipoToken.PARENTESIS_CLOSE.getValue()) && producion.equalsIgnoreCase("FOR_OPCION")) {
+            p = this.producciones.get(109);
+        }
+        //RANGE_VALUE
+        else if (token.getSubCategoria().equals(TipoToken.ID.getValue()) && producion.equalsIgnoreCase("RANGE_VALUE")) {
+            p = new String[]{TipoToken.ID.getValue()};
+        } else if (token.getSubCategoria().equals(TipoToken.NUMERO.getValue()) && producion.equalsIgnoreCase("RANGE_VALUE")) {
+            p = new String[]{TipoToken.NUMERO.getValue()};
+        }
+        //OTHER
+        else if (token.getSubCategoria().equals(TipoToken.SIGNOS_COMA.getValue()) && producion.equalsIgnoreCase("OTHER")) {
+            p = this.producciones.get(75);
+        } else if (token.getSubCategoria().equals(TipoToken.PARENTESIS_CLOSE.getValue()) && producion.equalsIgnoreCase("OTHER")) {
+            p = this.producciones.get(109);
+        }
+        //SIMBOLO
+        else if (token.getSubCategoria().equals(TipoToken.OPERADOR_ASIGNACION_MODULO_IGUAL.getValue()) && producion.equalsIgnoreCase("SIMBOLO")) {
+            p = this.producciones.get(78);
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_ASIGNACION_MAS_IGUAL.getValue()) && producion.equalsIgnoreCase("SIMBOLO")) {
+            p = this.producciones.get(79);
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_ASIGNACION_MENOS_IGUAL.getValue()) && producion.equalsIgnoreCase("SIMBOLO")) {
+            p = this.producciones.get(80);
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_ASIGNACION_POR_IGUAL.getValue()) && producion.equalsIgnoreCase("SIMBOLO")) {
+            p = this.producciones.get(81);
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_ASIGNACION_EXPONENTE_IGUAL.getValue()) && producion.equalsIgnoreCase("SIMBOLO")) {
+            p = this.producciones.get(82);
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_ASIGNACION_DIV_IGUAL.getValue()) && producion.equalsIgnoreCase("SIMBOLO")) {
+            p = this.producciones.get(83);
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_ASIGNACION_DIV_2_IGUAL.getValue()) && producion.equalsIgnoreCase("SIMBOLO")) {
+            p = this.producciones.get(84);
+        } else if (token.getSubCategoria().equals(TipoToken.PARENTESIS_OPEN.getValue()) && producion.equalsIgnoreCase("SIMBOLO")) {
+            p = this.producciones.get(86);
+        } else if (token.getSubCategoria().equals(TipoToken.SIGNO_IGUAL.getValue()) && producion.equalsIgnoreCase("SIMBOLO")) {
+            p = this.producciones.get(87);
+        }
+        //EXP
+        else if ((token.getSubCategoria().equals(TipoToken.ID.getValue())
+                || token.getSubCategoria().equals(TipoToken.CADENA.getValue())
+                || token.getSubCategoria().equals(TipoToken.NUMERO.getValue())
+                || token.getSubCategoria().equals(TipoToken.TRUE.getValue())
+                || token.getSubCategoria().equals(TipoToken.FALSE.getValue())
+                || token.getSubCategoria().equals(TipoToken.PARENTESIS_OPEN.getValue())
+                || token.getSubCategoria().equals(TipoToken.CORCHETE_OPEN.getValue())
+                || token.getSubCategoria().equals(TipoToken.LLAVE_OPEN.getValue())
+        )
+                && producion.equalsIgnoreCase("EXP")) {
+            p = this.producciones.get(88);
+        } else if (token.getSubCategoria().equals("not") && producion.equalsIgnoreCase("EXP")) {
+            p = this.producciones.get(90);
+        }
+        //OPT_COMP
+        else if (token.getSubCategoria().equals(TipoToken.NOT.getValue()) && producion.equalsIgnoreCase("EXP")) {
+            p = this.producciones.get(93);
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_COMPARACION_IGUAL.getValue()) && producion.equalsIgnoreCase("OPT_COMP")) {
+            p = new String[]{"==", "VALOR", "OPT_LOGICO"};
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_COMPARACION_DIFERENTE.getValue()) && producion.equalsIgnoreCase("OPT_COMP")) {
+            p = new String[]{"!=", "VALOR", "OPT_LOGICO"};
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_COMPARACION_MAYOR_QUE.getValue()) && producion.equalsIgnoreCase("OPT_COMP")) {
+            p = new String[]{">", "VALOR", "OPT_LOGICO"};
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_COMPARACION_MAYOR_IGUAL.getValue()) && producion.equalsIgnoreCase("OPT_COMP")) {
+            p = new String[]{">=", "VALOR", "OPT_LOGICO"};
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_COMPARACION_MENOR_IGUAL.getValue()) && producion.equalsIgnoreCase("OPT_COMP")) {
+            p = new String[]{"<=", "VALOR", "OPT_LOGICO"};
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_COMPARACION_MENOR_QUE.getValue()) && producion.equalsIgnoreCase("OPT_COMP")) {
+            p = new String[]{"<", "VALOR", "OPT_LOGICO"};
+        } else if (token.getSubCategoria().equals("if") && producion.equalsIgnoreCase("OPT_COMP")) {
+            p = this.producciones.get(94);
+        }
+        else if (token.getSubCategoria().equals("in") && producion.equalsIgnoreCase("OPT_COMP")) {
+            p = this.producciones.get(92);
+        }
+        else if (token.getSubCategoria().equals("is") && producion.equalsIgnoreCase("OPT_COMP")) {
+            p = this.producciones.get(95);
+        }
+        else if (token.getSubCategoria().equals("$") && producion.equalsIgnoreCase("OPT_COMP")) {
+            p = this.producciones.get(109);
+        }
+        //OPT_LOGICO
+        else if (token.getSubCategoria().equals(TipoToken.AND.getValue()) && producion.equalsIgnoreCase("OPT_LOGICO")) {
+            p = new String[]{TipoToken.AND.getValue(), "COMP"};
+        }
+        else if (token.getSubCategoria().equals(TipoToken.OR.getValue()) && producion.equalsIgnoreCase("OPT_LOGICO")) {
+            p = new String[]{TipoToken.OR.getValue(), "COMP"};
+        }
+        //IS
+        else if (token.getSubCategoria().equals("is") && producion.equalsIgnoreCase("IS")) {
+            p = this.producciones.get(98);
+        }
+        //NEXT_IS
+        else if ((token.getSubCategoria().equals(TipoToken.ID.getValue())
+                || token.getSubCategoria().equals(TipoToken.CADENA.getValue())
+                || token.getSubCategoria().equals(TipoToken.NUMERO.getValue())
+                || token.getSubCategoria().equals(TipoToken.TRUE.getValue())
+                || token.getSubCategoria().equals(TipoToken.FALSE.getValue())
+                || token.getSubCategoria().equals(TipoToken.PARENTESIS_OPEN.getValue())
+                || token.getSubCategoria().equals(TipoToken.CORCHETE_OPEN.getValue())
+                || token.getSubCategoria().equals(TipoToken.LLAVE_OPEN.getValue())
+        )
+                && producion.equalsIgnoreCase("NEXT_IS")) {
+            p = this.producciones.get(4);
+        }else if (token.getSubCategoria().equals(TipoToken.NOT.getValue()) && producion.equalsIgnoreCase("NEXT_IS")) {
+            p = this.producciones.get(99);
+        }
+        //COMP
+        else if ((token.getSubCategoria().equals(TipoToken.ID.getValue())
+                || token.getSubCategoria().equals(TipoToken.CADENA.getValue())
+                || token.getSubCategoria().equals(TipoToken.NUMERO.getValue())
+                || token.getSubCategoria().equals(TipoToken.TRUE.getValue())
+                || token.getSubCategoria().equals(TipoToken.FALSE.getValue())
+                || token.getSubCategoria().equals(TipoToken.PARENTESIS_OPEN.getValue())
+                || token.getSubCategoria().equals(TipoToken.CORCHETE_OPEN.getValue())
+                || token.getSubCategoria().equals(TipoToken.LLAVE_OPEN.getValue())
+        )
+                && producion.equalsIgnoreCase("COMP")) {
+            p = this.producciones.get(100);
+        }
+        //CONDICION
+        else if ((token.getSubCategoria().equals(TipoToken.ID.getValue())
+                || token.getSubCategoria().equals(TipoToken.CADENA.getValue())
+                || token.getSubCategoria().equals(TipoToken.NUMERO.getValue())
+                || token.getSubCategoria().equals(TipoToken.TRUE.getValue())
+                || token.getSubCategoria().equals(TipoToken.FALSE.getValue())
+                || token.getSubCategoria().equals(TipoToken.PARENTESIS_OPEN.getValue())
+                || token.getSubCategoria().equals(TipoToken.CORCHETE_OPEN.getValue())
+                || token.getSubCategoria().equals(TipoToken.LLAVE_OPEN.getValue())
+        )
+                && producion.equalsIgnoreCase("CONDICION")) {
+            p = this.producciones.get(101);
+        }
+        else if (token.getSubCategoria().equals(TipoToken.NOT.getValue()) && producion.equalsIgnoreCase("CONDICION")) {
+            p = this.producciones.get(102);
+        }
+        //CONDICION_END
+        else if ((token.getSubCategoria().equals("else")
+                || token.getSubCategoria().equals(":")
+        )
+                && producion.equalsIgnoreCase("CONDICION_END")) {
+            p = this.producciones.get(109);
         }
         return p;
     }
