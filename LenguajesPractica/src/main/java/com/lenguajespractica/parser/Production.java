@@ -147,7 +147,15 @@ public class Production {
         //con B
         if (token.getSubCategoria().equals(TipoToken.ID.getValue()) && producion.equals("B")) {
             p = this.producciones.get(3);
-        } else if (token.getLexema().equals("print") && producion.equals("B")) {
+        }
+        //prueba caso-epsilon
+        else if (token.getSubCategoria().equals("$") && producion.equalsIgnoreCase("OPT_COMP")) {
+            p = new String[]{Parser.EPSILON};
+        } else if (token.getSubCategoria().equals("$") && producion.equalsIgnoreCase("OPT_LOGICO")) {
+            p = this.producciones.get(109);
+        }
+        //
+        else if (token.getLexema().equals("print") && producion.equals("B")) {
             p = this.producciones.get(3);
         } else if (token.getLexema().equals("if") && producion.equals("B")) {
             p = this.producciones.get(2);
@@ -438,6 +446,8 @@ public class Production {
             p = this.producciones.get(88);
         } else if (token.getSubCategoria().equals("not") && producion.equalsIgnoreCase("EXP")) {
             p = this.producciones.get(90);
+        }else if (token.getSubCategoria().equals("is") && producion.equalsIgnoreCase("EXP")) {
+            p = this.producciones.get(95);
         }
         //OPT_COMP
         else if (token.getSubCategoria().equals(TipoToken.NOT.getValue()) && producion.equalsIgnoreCase("EXP")) {
@@ -456,23 +466,16 @@ public class Production {
             p = new String[]{"<", "VALOR", "OPT_LOGICO"};
         } else if (token.getSubCategoria().equals("if") && producion.equalsIgnoreCase("OPT_COMP")) {
             p = this.producciones.get(94);
-        }
-        else if (token.getSubCategoria().equals("in") && producion.equalsIgnoreCase("OPT_COMP")) {
+        } else if (token.getSubCategoria().equals("in") && producion.equalsIgnoreCase("OPT_COMP")) {
             p = this.producciones.get(92);
-        }
-        else if (token.getSubCategoria().equals("is") && producion.equalsIgnoreCase("OPT_COMP")) {
-            p = this.producciones.get(95);
-        }
-        else if (token.getSubCategoria().equals("$") && producion.equalsIgnoreCase("OPT_COMP")) {
-            p = this.producciones.get(109);
         }
         //OPT_LOGICO
         else if (token.getSubCategoria().equals(TipoToken.AND.getValue()) && producion.equalsIgnoreCase("OPT_LOGICO")) {
             p = new String[]{TipoToken.AND.getValue(), "COMP"};
-        }
-        else if (token.getSubCategoria().equals(TipoToken.OR.getValue()) && producion.equalsIgnoreCase("OPT_LOGICO")) {
+        } else if (token.getSubCategoria().equals(TipoToken.OR.getValue()) && producion.equalsIgnoreCase("OPT_LOGICO")) {
             p = new String[]{TipoToken.OR.getValue(), "COMP"};
         }
+
         //IS
         else if (token.getSubCategoria().equals("is") && producion.equalsIgnoreCase("IS")) {
             p = this.producciones.get(98);
@@ -489,7 +492,7 @@ public class Production {
         )
                 && producion.equalsIgnoreCase("NEXT_IS")) {
             p = this.producciones.get(4);
-        }else if (token.getSubCategoria().equals(TipoToken.NOT.getValue()) && producion.equalsIgnoreCase("NEXT_IS")) {
+        } else if (token.getSubCategoria().equals(TipoToken.NOT.getValue()) && producion.equalsIgnoreCase("NEXT_IS")) {
             p = this.producciones.get(99);
         }
         //COMP
@@ -517,8 +520,7 @@ public class Production {
         )
                 && producion.equalsIgnoreCase("CONDICION")) {
             p = this.producciones.get(101);
-        }
-        else if (token.getSubCategoria().equals(TipoToken.NOT.getValue()) && producion.equalsIgnoreCase("CONDICION")) {
+        } else if (token.getSubCategoria().equals(TipoToken.NOT.getValue()) && producion.equalsIgnoreCase("CONDICION")) {
             p = this.producciones.get(102);
         }
         //CONDICION_END
@@ -527,6 +529,18 @@ public class Production {
         )
                 && producion.equalsIgnoreCase("CONDICION_END")) {
             p = this.producciones.get(109);
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_COMPARACION_IGUAL.getValue()) && producion.equalsIgnoreCase("CONDICION_END")) {
+            p = new String[]{"==", "VALOR"};
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_COMPARACION_DIFERENTE.getValue()) && producion.equalsIgnoreCase("CONDICION_END")) {
+            p = new String[]{"!=", "VALOR"};
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_COMPARACION_MAYOR_QUE.getValue()) && producion.equalsIgnoreCase("CONDICION_END")) {
+            p = new String[]{">", "VALOR"};
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_COMPARACION_MAYOR_IGUAL.getValue()) && producion.equalsIgnoreCase("CONDICION_END")) {
+            p = new String[]{">=", "VALOR",};
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_COMPARACION_MENOR_IGUAL.getValue()) && producion.equalsIgnoreCase("CONDICION_END")) {
+            p = new String[]{"<=", "VALOR"};
+        } else if (token.getSubCategoria().equals(TipoToken.OPERADOR_COMPARACION_MENOR_QUE.getValue()) && producion.equalsIgnoreCase("CONDICION_END")) {
+            p = new String[]{"<", "VALOR"};
         }
         return p;
     }

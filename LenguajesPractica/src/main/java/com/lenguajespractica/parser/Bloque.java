@@ -10,9 +10,18 @@ import java.util.List;
 public class Bloque {
 
     private List<Token> tokens;
+    private List<Bloque> lineasTokens;
 
     public  Bloque(){
         this.tokens = new ArrayList<>();
+        this.lineasTokens = new ArrayList<>();
+        dividirPorLiena();
+    }
+    private void dividirPorLiena(){
+        for (int i = 0; i < this.tokens.size(); i++) {
+
+        }
+
     }
 
 }

@@ -22,8 +22,23 @@ public class Parser {
 
     public void runParser(List<Token> tokens) {
         Stack<String> stack = new Stack<>();
+        stack.push("$");
+        stack.push("B");
+        //simbolo de aceptacion
+        Token dolar = new Token();
+        dolar.setSubCategoria("$");
+        tokens.add(dolar);
+
         Token next = nextToken(tokens);
+
         while (!stack.empty()) {
+            for (int i = 0; i < stack.size(); i++) {
+                System.out.print(stack.get(i) + " ");
+            }
+            System.out.println();
+            System.out.println("cabeza " + stack.get(stack.size() - 1));
+            System.out.println("token: " + next.getSubCategoria());
+            System.out.println();
             if (stack.get(stack.size() - 1).equals(Parser.SINTAXIS_ERROR)) {
                 System.out.println(Parser.SINTAXIS_ERROR);
                 stack.pop();
@@ -43,6 +58,11 @@ public class Parser {
                 for (int i = productions.length - 1; i > -1; i--) {
                     stack.push(productions[i]);
                 }
+                System.out.println("productions");
+                for (int i = 0; i < productions.length; i++) {
+                    System.out.print(productions[i] + " ");
+                }
+                System.out.println();
             }
         }
         if (stack.empty()) {
@@ -53,9 +73,6 @@ public class Parser {
     }
 
     private Token nextToken(List<Token> tokens) {
-        if (tokens.get(this.index).getCategoria().equals(TipoToken.COMENTARIO.getValue())) {
-            this.index++;
-        }
         return tokens.get(this.index++);
     }
 }

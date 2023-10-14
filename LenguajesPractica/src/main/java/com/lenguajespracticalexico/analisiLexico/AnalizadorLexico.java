@@ -33,7 +33,6 @@ class AnalizadorLexico {
     public AnalizadorLexico() {
         this.afd = new Afd();
         this.caracterPosicion = new CaracterPosicion();
-
     }
 
     private void inicialiar() {
@@ -104,7 +103,7 @@ class AnalizadorLexico {
                 }
             } else {
                 //validamos si existe algún símbolo que no esté en el alfabeto o símbolos permitidos
-                if (temp != '\n' && (int) temp != 13) {
+                if ((int) temp != 13) {
                     stringToken += temp;
                     crearToken(stringToken, fila, columna, estadoActual);
                     stringToken = "";
@@ -131,7 +130,7 @@ class AnalizadorLexico {
         } else {
             if (stringToken.equals("\n")) {
                 tokenNew.setCategoria(TipoToken.SALTO_LINEA.toString());
-                tokenNew.setSubCategoria(TipoToken.SALTO_LINEA.getValue());
+                tokenNew.setSubCategoria(TipoToken.SALTO_LINEA.toString());
                 tokens.add(tokenNew);
             } else {
                 tokenNew.setCategoria(ErrorToken.TOKEN_ERRONÉO.toString());
@@ -179,12 +178,6 @@ class AnalizadorLexico {
      * @param estadoActual
      */
     private void clasificarToken(Token token, int estadoActual) {
-        for (Map.Entry<String, String> element : afd.getDiccionario().entrySet()) {
-            if (element.getValue().equals(token.getLexema())) {
-                token.setSubCategoria(element.getKey());
-                break;
-            }
-        }
         switch (estadoActual) {
             case 1, 2 -> {
                 if (isWordKey(token)) {
@@ -233,6 +226,7 @@ class AnalizadorLexico {
                 } else {
                     token.setCategoria(TipoToken.CADENA.toString());
                     token.setPatron(ExpresionesRegulares.CADENA);
+                    token.setSubCategoria(TipoToken.CADENA.toString());
                 }
             }
             case 11, 23 -> {
@@ -253,6 +247,12 @@ class AnalizadorLexico {
                 token.setCategoria(TipoToken.DECIMAL.toString());
                 token.setPatron(ExpresionesRegulares.DECIMAL);
                 token.setSubCategoria(TipoToken.NUMERO.getValue());
+            }
+        }
+        for (Map.Entry<String, String> element : afd.getDiccionario().entrySet()) {
+            if (element.getValue().equals(token.getLexema())) {
+                token.setSubCategoria(element.getValue());
+                break;
             }
         }
     }

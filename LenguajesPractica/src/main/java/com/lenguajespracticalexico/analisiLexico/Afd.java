@@ -73,8 +73,6 @@ class Afd {
         //constantes
         this.booleanas = new String[]{"True", "False"};
         this.diccionario.put("True", "True");
-        this.diccionario.put("False", "False");
-
         /**
          *
          */
