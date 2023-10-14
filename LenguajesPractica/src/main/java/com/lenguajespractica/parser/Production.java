@@ -176,7 +176,7 @@ public class Production {
         }
         //FUNTION
         else if (token.getLexema().equals("def") && producion.equals("FUNTION")) {
-            p = this.producciones.get(1);
+            p = this.producciones.get(64);
         }
         //INSTRUCCION
         else if (token.getLexema().equals("if") && producion.equals("INSTRUCCION")) {
@@ -238,6 +238,8 @@ public class Production {
         )
                 && producion.equals("CONTENT_ARRAY"))) {
             p = this.producciones.get(45);
+        } else if ((token.getSubCategoria().equals("]") && producion.equals("CONTENT_ARRAY"))) {
+            p = this.producciones.get(109);
         }
         //DICC_CONTENT
         else if ((token.getSubCategoria().equals(TipoToken.CADENA.getValue()) && producion.equals("DICC_CONTENT"))) {
@@ -466,7 +468,7 @@ public class Production {
             p = this.producciones.get(94);
         } else if (token.getSubCategoria().equals("in") && producion.equalsIgnoreCase("OPT_COMP")) {
             p = this.producciones.get(92);
-        }else if (token.getSubCategoria().equals("is") && producion.equalsIgnoreCase("OPT_COMP")) {
+        } else if (token.getSubCategoria().equals("is") && producion.equalsIgnoreCase("OPT_COMP")) {
             p = this.producciones.get(95);
         }
         //OPT_LOGICO

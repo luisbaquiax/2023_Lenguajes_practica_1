@@ -22,7 +22,7 @@ public class LenguajesPractica1 {
     public static void main(String[] args) {
         //new VentanaParser().setVisible(true);
         AnalizadorLexico analizadorLexico = new AnalizadorLexico();
-        analizadorLexico.analizarTokens("while 10 == 10: # 41 -while-68");
+        analizadorLexico.analizarTokens("imprimir_diccionario({\"nombre\": \"Adrian\"}) # 63");
 //        for (Token token : analizadorLexico.getTokens()) {
 //            System.out.println(token.toString());
 //        }
