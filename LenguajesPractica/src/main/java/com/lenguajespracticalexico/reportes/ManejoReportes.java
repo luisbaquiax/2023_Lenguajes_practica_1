@@ -31,7 +31,7 @@ public class ManejoReportes {
     public List<Token> getIdentificadores(List<Token> tokens) {
         List<Token> list = new ArrayList<>();
         for (Token token : tokens) {
-            if (token.getCategoria().equals(TipoToken.IDENTIFICADOR.toString())) {
+            if (token.getCategoria().equals(TipoToken.ID.toString())) {
                 list.add(token);
             }
         }

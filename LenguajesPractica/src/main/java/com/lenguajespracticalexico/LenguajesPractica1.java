@@ -4,6 +4,7 @@
 package com.lenguajespracticalexico;
 
 import com.lenguajespractica.parser.ManejoBloque;
+import com.lenguajespractica.parser.Production;
 import com.lenguajespracticalexico.analisiLexico.AnalizadorLexico;
 import com.lenguajespracticalexico.analisiLexico.Token;
 import com.lenguajespractica.parser.Bloque;
@@ -18,18 +19,14 @@ public class LenguajesPractica1 {
         //new VentanaParser().setVisible(true);
         AnalizadorLexico analizadorLexico = new AnalizadorLexico();
         analizadorLexico.analizarTokens("def funcion1():\n" +
-                                        "  hola\n" +
-                                        "  hola\n" +
-                                        "def funcion2():\n" +
-                                        "  hola\n" +
-                                        "variable = 446");
-        ManejoBloque manejoB = new ManejoBloque();
-        manejoB.dividirPorBloque(analizadorLexico.getTokens());
-        for (Bloque b : manejoB.getBloquesCodigo()) {
-            System.out.println("bloque");
-            for(Token token: b.getTokens()){
-                System.out.println(token.toString());
-            }
+                "  hola\n" +
+                "  hola\n" +
+                "def funcion2():\n" +
+                "  hola\n" +
+                "variable = 446");
+        Production p = new Production();
+        for (int i = 0; i < p.getProducciones().size(); i++) {
+            System.out.println(i);
         }
     }
 }

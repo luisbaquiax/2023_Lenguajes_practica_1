@@ -104,7 +104,7 @@ class AnalizadorLexico {
                 }
             } else {
                 //validamos si existe algún símbolo que no esté en el alfabeto o símbolos permitidos
-                if (temp != '\n' && (int)temp!=13) {
+                if (temp != '\n' && (int) temp != 13) {
                     stringToken += temp;
                     crearToken(stringToken, fila, columna, estadoActual);
                     stringToken = "";
@@ -129,8 +129,14 @@ class AnalizadorLexico {
             clasificarToken(tokenNew, estadoActual);
             tokens.add(tokenNew);
         } else {
-            tokenNew.setCategoria(ErrorToken.TOKEN_ERRONÉO.toString());
-            tokenErrores.add(tokenNew);
+            if (stringToken.equals("\n")) {
+                tokenNew.setCategoria(TipoToken.SALTO_LINEA.toString());
+                tokenNew.setSubCategoria(TipoToken.SALTO_LINEA.getValue());
+                tokens.add(tokenNew);
+            } else {
+                tokenNew.setCategoria(ErrorToken.TOKEN_ERRONÉO.toString());
+                tokenErrores.add(tokenNew);
+            }
         }
     }
 
@@ -192,9 +198,9 @@ class AnalizadorLexico {
                     token.setCategoria(TipoToken.OPERADOR_LOGICO.toString());
                     token.setPatron(token.getLexema());
                 } else {
-                    token.setCategoria(TipoToken.IDENTIFICADOR.toString());
+                    token.setCategoria(TipoToken.ID.toString());
                     token.setPatron(ExpresionesRegulares.ID);
-                    token.setSubCategoria(TipoToken.IDENTIFICADOR.toString());
+                    token.setSubCategoria(TipoToken.ID.toString());
                 }
             }
             case 3, 4, 5, 6, 7, 16, 17 -> {

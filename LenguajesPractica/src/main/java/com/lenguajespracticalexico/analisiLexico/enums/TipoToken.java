@@ -5,7 +5,6 @@
 package com.lenguajespracticalexico.analisiLexico.enums;
 
 /**
- *
  * @author luis
  */
 public enum TipoToken {
@@ -39,12 +38,12 @@ public enum TipoToken {
     OPERADOR_ASIGNACION_MENOS_IGUAL("-="),
     PALABRA_CLAVE("PALABRA_CLAVE"),
     CADENA("CADENA"),
-    IDENTIFICADOR("IDENTIFICADOR"),
+    ID("ID"),
     ENTERO("ENTERO"),
     DECIMAL("DECIMAL"),
     BOOLEANAS("BOOLEANAS"),
-    BOOLEANAS_FALSE("FALSE"),
-    BOOLEANAS_TRUE("TRUE"),
+    FALSE("False"),
+    TRUE("True"),
     COMENTARIO("COMENTARIO"),
     SIGNOS("SIGNOS"),
     SIGNOS_PAREN_OPEN("("),
@@ -62,15 +61,16 @@ public enum TipoToken {
     IN("in"),
     NOT("not"),
     AND("and"),
-    OR("or");
+    OR("or"),
+    SALTO_LINEA("\n");
 
-    public  String value;
+    public String value;
 
-    private TipoToken(String value){
+    private TipoToken(String value) {
         this.value = value;
     }
 
-    public String getValue(){
+    public String getValue() {
         return this.value;
     }
 }
