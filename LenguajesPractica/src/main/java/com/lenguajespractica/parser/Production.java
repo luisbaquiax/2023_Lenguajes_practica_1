@@ -69,7 +69,7 @@ public class Production {
         this.producciones.add(new String[]{TipoToken.FALSE.getValue()}); // 43
         this.producciones.add(new String[]{"[", "CONTENT_ARRAY", "]"}); // 44
         this.producciones.add(new String[]{"VALUE_ARRAY", "SEPARADOR", "CONTENT_ARRAY"}); // 45
-        this.producciones.add(new String[]{"{ DICC_CONTENT }"}); // 46
+        this.producciones.add(new String[]{"{", "DICC_CONTENT", "}"}); // 46
         this.producciones.add(new String[]{TipoToken.CADENA.getValue(), ":", "VALUE_ARRAY", "SEPARADOR", "DICC_CONTENT"}); // 47
         this.producciones.add(new String[]{"(", "X", ")"}); // 48
         this.producciones.add(new String[]{"T", "X'"}); // 49
@@ -245,7 +245,7 @@ public class Production {
         else if ((token.getSubCategoria().equals(TipoToken.CADENA.getValue()) && producion.equals("DICC_CONTENT"))) {
             p = this.producciones.get(10);
         } else if ((token.getSubCategoria().equals(TipoToken.SIGNOS_LLAVE_CLOSE.getValue()) && producion.equals("DICC_CONTENT"))) {
-            p = this.producciones.get(10);
+            p = this.producciones.get(109);
         }
         //ELEMENT_DICC
         else if ((token.getSubCategoria().equals(TipoToken.CADENA.getValue()) && producion.equals("ELEMENT_DICC"))) {

@@ -415,6 +415,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackEditorActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnSintactico">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="An&#xe1;lisis sint&#xe1;ctico"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSintacticoActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JToolBar$Separator" name="jSeparator2">
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel2">
@@ -427,7 +435,7 @@
                           <Component id="labelFilter" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtFilter" min="-2" pref="110" max="-2" attributes="0"/>
-                          <EmptySpace pref="794" max="32767" attributes="0"/>
+                          <EmptySpace pref="693" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -439,7 +447,7 @@
                               <Component id="txtFilter" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="labelFilter" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="7" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

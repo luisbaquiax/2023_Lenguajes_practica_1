@@ -14,10 +14,12 @@ public class Parser {
 
     private Production production;
     private int index;
+    private  List<ErrorSintactico> errores;
 
-    public Parser() {
+    public Parser(List<ErrorSintactico> errores) {
         this.index = 0;
         this.production = new Production();
+        this.errores = errores;
     }
 
     public void runParser(List<Token> tokens) {
@@ -40,6 +42,7 @@ public class Parser {
             System.out.println("token: " + next.getSubCategoria());
             System.out.println();
             if (stack.get(stack.size() - 1).equals(Parser.SINTAXIS_ERROR)) {
+                this.errores.add(new ErrorSintactico(next.getFila(), next.getColumna()));
                 System.out.println(Parser.SINTAXIS_ERROR);
                 stack.pop();
                 next = nextToken(tokens);

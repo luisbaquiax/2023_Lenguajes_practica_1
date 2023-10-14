@@ -12,11 +12,11 @@ public class ManejoBloque {
     private List<Token> tokens;
     private List<Bloque> bloquesCodigo;
 
-    public ManejoBloque() {
-
+    public ManejoBloque(List<Token> tokens) {
+        dividirPorBloque(tokens);
     }
 
-    public void dividirPorBloque(List<Token> tokens) {
+    private void dividirPorBloque(List<Token> tokens) {
         this.tokens = tokens;
         this.bloquesCodigo = new ArrayList<>();
         int index = 0;
@@ -33,9 +33,5 @@ public class ManejoBloque {
                 bloque.getTokens().add(tokens.get(i));
             }
         }
-    }
-
-    private void searchTokenColumn1(int index, List<Token> tokens) {
-
     }
 }
