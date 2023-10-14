@@ -446,8 +446,6 @@ public class Production {
             p = this.producciones.get(88);
         } else if (token.getSubCategoria().equals("not") && producion.equalsIgnoreCase("EXP")) {
             p = this.producciones.get(90);
-        }else if (token.getSubCategoria().equals("is") && producion.equalsIgnoreCase("EXP")) {
-            p = this.producciones.get(95);
         }
         //OPT_COMP
         else if (token.getSubCategoria().equals(TipoToken.NOT.getValue()) && producion.equalsIgnoreCase("EXP")) {
@@ -468,6 +466,8 @@ public class Production {
             p = this.producciones.get(94);
         } else if (token.getSubCategoria().equals("in") && producion.equalsIgnoreCase("OPT_COMP")) {
             p = this.producciones.get(92);
+        }else if (token.getSubCategoria().equals("is") && producion.equalsIgnoreCase("OPT_COMP")) {
+            p = this.producciones.get(95);
         }
         //OPT_LOGICO
         else if (token.getSubCategoria().equals(TipoToken.AND.getValue()) && producion.equalsIgnoreCase("OPT_LOGICO")) {
