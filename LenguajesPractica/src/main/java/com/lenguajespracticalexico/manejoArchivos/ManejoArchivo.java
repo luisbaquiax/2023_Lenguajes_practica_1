@@ -35,8 +35,8 @@ public class ManejoArchivo {
      */
     public String pathChoserSave() {
         choser = new JFileChooser();
-        choser.addChoosableFileFilter(new FileNameExtensionFilter("txt", "txt"));
-        choser.setAcceptAllFileFilterUsed(false);
+        choser.addChoosableFileFilter(new FileNameExtensionFilter("txt", "txt", "py"));
+        choser.setAcceptAllFileFilterUsed(true);
         int seleccionado = choser.showSaveDialog(null);
         if (seleccionado == APPROVE_OPTION) {
             return (choser.getSelectedFile().getAbsolutePath());
@@ -51,8 +51,8 @@ public class ManejoArchivo {
      */
     public String pathChoserOpen() {
         choser = new JFileChooser();
-        choser.addChoosableFileFilter(new FileNameExtensionFilter("txt", "txt"));
-        choser.setAcceptAllFileFilterUsed(false);
+        choser.addChoosableFileFilter(new FileNameExtensionFilter("txt", "txt", "py"));
+        choser.setAcceptAllFileFilterUsed(true);
         int seleccionado = choser.showOpenDialog(null);
         if (seleccionado == APPROVE_OPTION) {
             return (choser.getSelectedFile().getAbsolutePath());
