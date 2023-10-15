@@ -9,20 +9,21 @@ import java.util.Stack;
 
 @Data
 public class Parser {
+
     public static final String SINTAXIS_ERROR = "sintaxis-error";
     public static final String EPSILON = "ε";
 
     private Production production;
     private int index;
-    private  List<ErrorSintactico> errores;
+    private List<ErrorSintactico> errores;
 
     public Parser(List<ErrorSintactico> errores) {
-        this.index = 0;
         this.production = new Production();
         this.errores = errores;
     }
 
     public void runParser(List<Token> tokens) {
+        this.index = 0;
         Stack<String> stack = new Stack<>();
         stack.push("$");
         stack.push("B");
@@ -39,7 +40,7 @@ public class Parser {
             }
             System.out.println();
             System.out.println("cabeza " + stack.get(stack.size() - 1));
-            System.out.println("token: " + next.getSubCategoria());
+            System.out.println("token: " + next.getSubCategoria() + " lexema: " + next.getLexema());
             System.out.println();
             if (stack.get(stack.size() - 1).equals(Parser.SINTAXIS_ERROR)) {
                 this.errores.add(new ErrorSintactico(next.getFila(), next.getColumna()));

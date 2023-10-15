@@ -69,7 +69,7 @@ public class CaracterPosicion {
             posicion = 22;
         } else if (caracter == ':') {
             posicion = 23;
-        } else if (caracter == ' ' || caracter == '?' /*|| caracter == '\t'*/) {
+        } else if (caracter == '?' /*|| caracter == '\t'*/) {
             posicion = 24;
         } else if (caracter == '.') {
             posicion = 25;
