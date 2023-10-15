@@ -4,7 +4,7 @@
  */
 package com.lenguajespracticalexico.frontend;
 
-import com.lenguajespractica.parser.ParserAnalizer;
+import com.lenguajespractica.parser.ParserBloque;
 import com.lenguajespracticalexico.analisiLexico.AnalizadorLexico;
 import com.lenguajespracticalexico.analisiLexico.Token;
 import com.lenguajespracticalexico.graphiz.ManejoGrafica;
@@ -650,16 +650,28 @@ public class VentanaParser extends javax.swing.JFrame {
 
     private void btnSintacticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSintacticoActionPerformed
         // TODO add your handling code here:
-        ParserAnalizer parser = new ParserAnalizer(this.auxiTokens);
-        String text = "";
-        for (int i = 0; i < parser.getErrores().size(); i++) {
-            text+="Eror sintáctico, fila "+parser.getErrores().get(i).getFila()
-                    + " columna: "+parser.getErrores().get(i).getColumna()+"\n";
+        if (!analizadorLexico.getTokens().isEmpty()) {
+            if (analizadorLexico.getTokenErrores().isEmpty()) {
+                ParserBloque parser = new ParserBloque(analizadorLexico.getTokens());
+                parser.analizarBloques();
+                String text = "";
+                for (int i = 0; i < parser.getErrores().size(); i++) {
+                    text += "Eror sintáctico, fila " + parser.getErrores().get(i).getFila()
+                            + " columna: " + parser.getErrores().get(i).getColumna() + "\n";
+                }
+                if (parser.getErrores().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Se ha hecho el análisis correctamente");
+                }
+                this.textPaneErrores.setText(text);
+            } else {
+                JOptionPane.showMessageDialog(null, """
+                                                    Debes corregir los errores léxicos.
+                                                    """);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes realizar primero el análisis léxico");
         }
-        if(parser.getErrores().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Se ha hecho el análisis correctamente");
-        }
-        this.textPaneErrores.setText(text);
+
     }//GEN-LAST:event_btnSintacticoActionPerformed
 
     /**
